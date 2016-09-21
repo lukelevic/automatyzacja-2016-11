@@ -1,0 +1,6 @@
+git add .
+
+git config --global user.name "Jan Nowak"
+git config --global user.email jannowak@example.com
+git commit -m
+git push origin user:user
