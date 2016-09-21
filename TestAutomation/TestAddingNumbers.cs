@@ -16,7 +16,7 @@ namespace TestAutomation
             int digitTwo = Convert.ToInt32(stringTwo);
 
             int calcResult = digitOne + digitTwo;
-            Assert.AreEqual(calcResult, expResult);
+            Assert.AreNotEqual(calcResult, expResult);
         }
     }
 }
