@@ -39,7 +39,12 @@ namespace testautomation
         {
             DayOffWeek.Remove("Sunday");
             Console.WriteLine("test two");
-            Assert.AreEqual(2, DayOffWeek.Count());
+            Assert.AreEqual(3, DayOffWeek.Count());
+        }
+        [Test]
+        public void testThree()
+        {
+            DayOffWeek.Contains("Monday");
         }
        
 
