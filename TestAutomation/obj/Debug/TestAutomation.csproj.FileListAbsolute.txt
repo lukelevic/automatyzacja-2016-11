@@ -1,0 +1,7 @@
+C:\repozytorium\automatyzacja-2016-11\TestAutomation\bin\Debug\TestAutomation.dll
+C:\repozytorium\automatyzacja-2016-11\TestAutomation\bin\Debug\TestAutomation.pdb
+C:\repozytorium\automatyzacja-2016-11\TestAutomation\bin\Debug\nunit.framework.dll
+C:\repozytorium\automatyzacja-2016-11\TestAutomation\bin\Debug\nunit.framework.xml
+C:\repozytorium\automatyzacja-2016-11\TestAutomation\obj\Debug\TestAutomation.csprojResolveAssemblyReference.cache
+C:\repozytorium\automatyzacja-2016-11\TestAutomation\obj\Debug\TestAutomation.dll
+C:\repozytorium\automatyzacja-2016-11\TestAutomation\obj\Debug\TestAutomation.pdb
