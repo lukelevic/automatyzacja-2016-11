@@ -47,6 +47,14 @@ namespace TestAutomation
             Lista = new List<string> { "a", "b", "c" };
 
         }
+        [Test, Sequential]
+        public void param(
+            [Values("1")] string x, [Values("2")] string y, [Values(3)] int s)
+        {
+         int wynik = Int32.Parse(x) + Int32.Parse(y);
+         Assert.AreEqual(wynik, s);
+
+        }
 
 
 
