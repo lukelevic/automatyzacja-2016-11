@@ -37,8 +37,7 @@ namespace testautomation
         {
             dni = new List<string> {"monday", "tuesday", "wednesday"};
             
-        }
-        
+        }        
 
         [Test]
         public void testTwo()
@@ -50,6 +49,21 @@ namespace testautomation
             Assert.AreEqual(IsOnList, false);
         
          }
+
+
+        [Test, Sequential]
+        public void dodawanie([Values("1")] string a, [Values("2")] string b, [Values(3)] int x)
+        {
+
+            int c = Int32.Parse(a) + Int32.Parse(b);
+            Assert.AreEqual(c, x);
+
+        }
+
+
+
+
+
 
     }
 }
