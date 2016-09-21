@@ -2,6 +2,7 @@
  * Created by Administrator on 2016-09-21.
  */
 
+import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -25,6 +26,12 @@ public class FirstUnitTest {
     public static void Setup()
     {
         myList =  new ArrayList<String>();
+    }
+
+    @AfterClass
+    public static void TearDown()
+    {
+        myList.clear();
     }
 
     @Test
