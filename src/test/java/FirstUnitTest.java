@@ -6,10 +6,13 @@ import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
 import java.util.ArrayList;
 import java.util.List;
+import junitparams.*;
 
+@RunWith(JUnitParamsRunner.class)
 public class FirstUnitTest {
 
     static final String TEST_STRING = "Monday";
@@ -55,4 +58,16 @@ public class FirstUnitTest {
 
     }
 
+    @Test
+    @Parameters({"1,2,3","2,3,5"})
+    public void testSum(String a, String b, int expectedValue)
+    {
+        int intA = Integer.parseInt(a);
+        int intB = Integer.parseInt(b);
+
+        int result = intA + intB;
+        Assert.assertEquals(result, expectedValue);
+
+    }
+    
 }
