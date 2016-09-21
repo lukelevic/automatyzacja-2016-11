@@ -1,8 +1,11 @@
 
+import junitparams.JUnitParamsRunner;
+import junitparams.Parameters;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +14,7 @@ import java.util.List;
      * Created by Administrator on 2016-09-21.
      */
 
-
+@RunWith(JUnitParamsRunner.class)
     public class testA {
         private List<String> Lista = new ArrayList<String>();
 
@@ -50,5 +53,20 @@ import java.util.List;
             Assert.assertEquals(Lista.size(), 2);
             Assert.assertFalse("Element jest na liscie", Lista.contains("monday"));
         }
+
+        @Test
+        @Parameters({"1,2,3"})
+        public void paramsInAnnotation(String a1, String b1, String s1) {
+
+
+        int a = Integer.parseInt(a1);
+        int b = Integer.parseInt(b1);
+        int s = Integer.parseInt(s1);
+        //int s = a + b;
+
+        Assert.assertEquals(a+b,s);
+
+    }
+
     }
 
