@@ -37,6 +37,7 @@ namespace TestAutomation
         [Test]
         public void shouldRemoveMonday()
         {
+            listOfDays.Add("Monday");
             listOfDays.Remove("Monday");
             Assert.False(listOfDays.Contains("Monday"));
             Assert.That(listOfDays.Count, Is.EqualTo(1));
