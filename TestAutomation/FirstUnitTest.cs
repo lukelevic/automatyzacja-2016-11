@@ -25,17 +25,18 @@ namespace TestAutomation
         public void tearDown()
         {
             listOfDays.Remove("Sunday");
+            listOfDays.Remove("Monday");
         }
         //[TestFixtureTearDown]
 
         [Test]
-        public void shouldAddMonday()
+        public void shouldAddElement()
         {
             listOfDays.Add("Monday");
             Assert.True(listOfDays.Contains("Monday"));
         }
         [Test]
-        public void shouldRemoveMonday()
+        public void shouldRemoveElement()
         {
             listOfDays.Add("Monday");
             listOfDays.Remove("Monday");
