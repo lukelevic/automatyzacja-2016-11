@@ -14,8 +14,8 @@ namespace testautomation
         [SetUp]
         // [SetUp]   // przed testem
         // [TearDown]
-        // [TestFixtureSetUp]
-        // [TestFixtureTearDown]
+        // [TestFixtureSetUp] //przed wszystkimi testami
+        // [TestFixtureTearDown] //po wszytskich testach
         public void setUp()
         {
             lista.Add("element");
@@ -45,5 +45,17 @@ namespace testautomation
             //Assert.areEqual(lista.size(),1);
             //Assert.False(lista.Contains("element"))
         }
+
+
+        [Test, Sequential]
+        public void testParam(
+            [Values("1", "2", "3")] string x,
+            [Values("2", "3", "5")] string y,
+            [Values("3", "5", "8")] string z)
+        {
+            int result = Convert.ToInt16(x) + Convert.ToInt16(y);
+            Assert.AreEqual(result, Convert.ToInt16(z));
+        }
     }
 }
+
