@@ -26,7 +26,6 @@ namespace TestAutomation
         {
             listOfDays.Remove("Sunday");
         }
-        //[TestFixtureSetUp]
         //[TestFixtureTearDown]
 
         [Test]
