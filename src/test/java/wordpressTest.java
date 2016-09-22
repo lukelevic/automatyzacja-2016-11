@@ -62,7 +62,6 @@ public class wordpressTest {
         driver.findElement(By.xpath("//li[@id='wp-admin-bar-ab-new-post']")).click();
 
         driver.findElement(By.xpath("//textarea[@class='textarea-autosize editor-title__input']")).sendKeys("Tytuł testowy z selenium");
-        System.out.println(expectedPostString);
         driver.findElement(By.xpath("//textarea[@id='tinymce-1']")).sendKeys(expectedPostString);
 
         driver.findElement(By.xpath("//button[@class='editor-ground-control__publish-button button is-primary']")).click();
