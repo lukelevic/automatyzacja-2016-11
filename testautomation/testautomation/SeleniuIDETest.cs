@@ -31,19 +31,7 @@ namespace SeleniumTests
             baseURLAdmin = "https://automatyzacja2016.wordpress.com/wp-admin";
             verificationErrors = new StringBuilder();
 
-            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-            var stringChars = new char[14];
-            var random = new Random();
-
-            for (int i = 0; i < 6; i++)
-            {
-                stringChars[i] = chars[random.Next(chars.Length)];
-            }
-
-            var tmp = new String(stringChars);
-            finalString = "AM Title" + tmp;
-
-
+            finalString = GenerateRandomName("AM title: ");
         }
         
         [TearDown]
@@ -60,20 +48,6 @@ namespace SeleniumTests
             Assert.AreEqual("", verificationErrors.ToString());
         }
         
-        [Test]
-        public void TheSeleniuIDETest()
-        {
-            driver.Navigate().GoToUrl(baseURL + "/");
-            driver.FindElement(By.LinkText("Log In")).Click();
-            driver.FindElement(By.Id("user_login")).Clear();
-            driver.FindElement(By.Id("user_login")).SendKeys("szkolenieautomatyzacja");
-            driver.FindElement(By.Id("user_pass")).Clear();
-            driver.FindElement(By.Id("user_pass")).SendKeys("QW12qw12");
-            driver.FindElement(By.Id("wp-submit")).Click();
-            driver.FindElement(By.CssSelector("img.gravatar")).Click();
-            driver.FindElement(By.ClassName("button me-sidebar__signout-button is-compact")).Click();
-        }
-
         [Test]
         public void SholudAddNewPost()
         {
@@ -95,28 +69,21 @@ namespace SeleniumTests
         }
         private void AddPost(string postText)
         {
-            IWebElement myDynamicElementWpisy = wait.Until<IWebElement>(d => d.FindElement(By.LinkText("Wpisy")));
-            myDynamicElementWpisy.Click();
-            IWebElement myDynamicElementDodajWpis = wait.Until<IWebElement>(d => d.FindElement(By.LinkText("Dodaj nowy")));
-            myDynamicElementDodajWpis.Click();
-            IWebElement myDynamicElementWpisTitle = wait.Until<IWebElement>(d => d.FindElement(By.Id("title")));
-            myDynamicElementWpisTitle.SendKeys(finalString);
-            IWebElement myDynamicElementPublish = wait.Until<IWebElement>(d => d.FindElement(By.Id("publish")));
-            myDynamicElementPublish.Click();
+            wait.Until<IWebElement>(d => d.FindElement(By.LinkText("Wpisy"))).Click();
+            wait.Until<IWebElement>(d => d.FindElement(By.LinkText("Dodaj nowy"))).Click();
+            wait.Until<IWebElement>(d => d.FindElement(By.Id("title"))).SendKeys(finalString);
+            wait.Until<IWebElement>(d => d.FindElement(By.Id("publish"))).Click();
         }
         private void Wylogowanie()
         {
-            IWebElement myDynamicElementAvatar = wait.Until<IWebElement>(d => d.FindElement(By. ClassName("avatar-32")));
-            myDynamicElementAvatar.Click();
-            IWebElement myDynamicElementLogout = wait.Until<IWebElement>(d => d.FindElement(By.ClassName("ab-sign-out")));
-            myDynamicElementLogout.Click();
+            wait.Until<IWebElement>(d => d.FindElement(By. ClassName("avatar-32"))).Click();
+            wait.Until<IWebElement>(d => d.FindElement(By.ClassName("ab-sign-out"))).Click();
         }
         private void SzukajWpisu(string SzukanyWpis)
         {
             driver.Navigate().GoToUrl(baseURL);
             Assert.NotNull(wait.Until<IWebElement>(d => d.FindElement(By.LinkText(SzukanyWpis))));
         }
-
         private bool IsElementPresent(By by)
         {
             try
@@ -129,7 +96,6 @@ namespace SeleniumTests
                 return false;
             }
         }
-        
         private bool IsAlertPresent()
         {
             try
@@ -142,7 +108,6 @@ namespace SeleniumTests
                 return false;
             }
         }
-        
         private string CloseAlertAndGetItsText() {
             try {
                 IAlert alert = driver.SwitchTo().Alert();
@@ -156,6 +121,20 @@ namespace SeleniumTests
             } finally {
                 acceptNextAlert = true;
             }
+        }
+        private string GenerateRandomName(string name)
+        {
+            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            var stringChars = new char[14];
+            var random = new Random();
+
+            for (int i = 0; i < 6; i++)
+            {
+                stringChars[i] = chars[random.Next(chars.Length)];
+            }
+
+            var tmp = new String(stringChars);
+            return name + tmp;
         }
     }
 }
