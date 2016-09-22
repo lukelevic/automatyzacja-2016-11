@@ -1,21 +1,13 @@
-//package com.example.tests;
-
 import java.util.Random;
-import java.util.regex.Pattern;
 import java.util.concurrent.TimeUnit;
 import org.junit.*;
 import static org.junit.Assert.*;
-import static org.hamcrest.CoreMatchers.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-//import org.openqa.selenium.firefox.FirefoxDriver;
-//import org.openqa.selenium.support.ui.Select;
 
 public class SeleniumTest extends BaseTest {
-//    private WebDriver driver;
-
 
     @Before
     public void setUp() throws Exception {
@@ -29,7 +21,7 @@ public class SeleniumTest extends BaseTest {
 
     @Test
     public void shouldLogIntoPage() throws Exception {
-        driver.get(baseUrl + "/wp-admin");
+        open("/wp-admin");
         login("szkolenieautomatyzacja", "QW12qw12");
         Assert.assertTrue(driver.getTitle().contains("Kokpit"));
         logout();
@@ -47,9 +39,8 @@ public class SeleniumTest extends BaseTest {
 
     @Test
     public void ShouldAddNewPost() {
-        Random randomId = new Random();
-        String title = "Title:"+String.valueOf(randomId.nextInt(1000000));
-        String post ="Text:"+String.valueOf(randomId.nextInt(1000000));
+        String title = "Title:"+getRandomString();
+        String post ="Text:"+getRandomString();
 
         open("/wp-admin");
         login("szkolenieautomatyzacja", "QW12qw12");
@@ -66,6 +57,11 @@ public class SeleniumTest extends BaseTest {
 
         Assert.assertTrue("Nie ma postu o tytule: "+title,driver.getPageSource().contains(title));
         Assert.assertTrue("Nie ma postu o tresci: "+post,driver.getPageSource().contains(post));
+    }
+
+    private String getRandomString() {
+        Random randomNumber = new Random();
+        return String.valueOf(randomNumber.nextInt(1000000));
     }
 
     private void addNewPost(String title, String post) {
