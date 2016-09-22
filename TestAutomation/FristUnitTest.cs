@@ -35,7 +35,7 @@ namespace TestAutomation
         public void IsRemovedFromList()
         {
             list.Remove("C");
-            var result = list.Contains("C");
+            var result = list.Contains("D");
             Assert.AreEqual(result, false);
         }
 
