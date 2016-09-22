@@ -42,43 +42,73 @@ namespace SeleniumTests
         }
 
         [Test]
-        public void TheLoginTest()
+        public void ShouldBePossibleToAddNewPost()
         {
-            //driver.Navigate().GoToUrl(baseURL + "/wp-login.php?redirect_to=https%3A%2F%2Fautomatyzacja2016.wordpress.com%2Fwp-admin%2F&reauth=1");
-            driver.Navigate().GoToUrl(baseURL);
 
-            driver.FindElement(By.Id("user_login")).Clear();
-            driver.FindElement(By.Id("user_login")).SendKeys("szkolenieautomatyzacja");
-            driver.FindElement(By.Id("user_pass")).Clear();
-            driver.FindElement(By.Id("user_pass")).SendKeys("QW12qw12");
-            driver.FindElement(By.Id("wp-submit")).Click();
-            Thread.Sleep(4000);
-            driver.FindElement(By.LinkText("Wpisy")).Click();
-           // driver.FindElement(By.XPath("//*[@id=\"menu - posts\"]/a/div[2]")).Click();
-            Thread.Sleep(2000);
-            //  driver.FindElement(By.XPath("//*[@id=\"wpbody - content\"]/div[3]/h1/a")).Click();
-            driver.FindElement(By.LinkText("Dodaj nowy")).Click();
-            Thread.Sleep(2000);
-            driver.FindElement(By.Name("post_title")).SendKeys("nowy tytul ala" +' '+ DateTime.Now);
-            Thread.Sleep(2000);
-            //  driver.FindElement(By.Id("tinymce")).SendKeys("jakis tekst");
-            driver.FindElement(By.Id("content-html")).Click();
-            driver.FindElement(By.Id("content")).SendKeys("raz dwa trzy");
-            driver.FindElement(By.Id("publish")).Click();
-            Thread.Sleep(2000);
-            driver.FindElement(By.XPath("//a[contains(.,'https://automatyzacja2016.wordpress.com/2016/09/22/nowy-tytul-ala')]")).Click();
-            //driver.FindElement(By.LinkText("https://automatyzacja2016.wordpress.com/2016/09/22/nowy-tytul-ala4")).Click();
-            Thread.Sleep(2000);
-           // driver.FindElement(By.XPath("//img[@class='avatar avatar-32']")).Click();
-        
-            driver.FindElement(By.CssSelector("img.avatar.avatar-32")).Click();
-            driver.FindElement(By.CssSelector("button.ab-sign-out")).Click();
+            LogIn();
+
+            AddNewPost();
+
+            AssertNewPostAdded();
+
+        }
+
+        private void AssertNewPostAdded()
+        {
+            Click(By.XPath("//a[contains(.,'https://automatyzacja2016.wordpress.com/2016/09/22/nowy-tytul-ala')]"));
+
+
+            LogOut();
             Assert.Pass("przeszlo");
         }
 
- 
+        private void AddNewPost()
+        {
+            Click(By.LinkText("Wpisy"));
+
+            Click((By.LinkText("Dodaj nowy")));
+
+            Insert(By.Name("post_title"), "nowy tytul ala" + ' ' + DateTime.Now);
 
 
+            Click(By.Id("content-html"));
+            Insert(By.Id("content"), "raz dwa trzy");
+            Click(By.Id("publish"));
+        }
+
+        public void LogIn()
+        {
+            driver.Navigate().GoToUrl(baseURL);
+    
+            Insert(By.Id("user_login"), "szkolenieautomatyzacja");
+
+            Insert(By.Id("user_pass"), "QW12qw12");
+    
+            Click(By.Id("wp-submit"));
+      
+        }
+        public void LogOut()
+        {
+            Click(By.XPath("//*[@id=\"wp-admin-bar-my-account\"]/a/img"));
+            Click(By.XPath("//*[@id=\"wp-admin-bar-user-info\"]/div/form/button"));
+        }
+
+
+        private void Click(By by)
+        {
+           WebDriverWait waitThree = new WebDriverWait(driver, new TimeSpan(
+               0, 0, 3));
+           waitThree.Until(ExpectedConditions.ElementToBeClickable(by));
+           driver.FindElement(by).Click(); 
+        }
+
+        private void Insert(By by, string v)
+        {
+            driver.FindElement(by).Clear();
+            driver.FindElement(by).SendKeys(v);
+        }
+
+       
         private bool IsElementPresent(By by)
         {
             try
@@ -126,5 +156,6 @@ namespace SeleniumTests
                 acceptNextAlert = true;
             }
         }
+
     }
 }
