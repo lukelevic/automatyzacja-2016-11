@@ -58,6 +58,7 @@ public class SeleniumTest {
        // System.out.println(strng);
         Thread.sleep(5000);
         Assert.assertTrue("jakubg", driver.getPageSource().contains("jakubg"));
+        System.out.println("Jest git!!!!!!!!!!!!!!!!!");
 
 
 
