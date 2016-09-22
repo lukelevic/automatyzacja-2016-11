@@ -33,7 +33,7 @@ public class FirstUnitClassTest {
         //  List<String> listOne = new ArrayList<String>();
         //    listOne.add("cc");
         //      listOne.add("cos");
-        Assert.assertTrue(listOne.contains("cc"));
+        Assert.assertTrue(listOne.contains("ccz"));
         System.out.println("test pierwszy" + listOne);
         //  Assert.assertEquals(true, false);
 
