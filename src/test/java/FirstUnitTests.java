@@ -6,7 +6,7 @@ import org.junit.Assert;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FirstUnitTest {
+public class FirstUnitTests {
     List<String> myLista;                        // uzycie zmiennej w tescieTrzy
     static List<String> myListaStatyczna;        // uzycie zmiennej w statycznym
 
