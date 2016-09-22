@@ -41,6 +41,8 @@ public class wordpressTest {
 
         baseUrl = "https://automatyzacja2016.wordpress.com/";
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+
+        login ("szkolenieautomatyzacja", "QW12qw12");
     }
 
     @Test
@@ -72,6 +74,16 @@ public class wordpressTest {
         else return null;
     }
 
+    public void findByXpathAndClick(String s)
+    {
+        findElement("xpath", s).click();
+    }
+
+    public void findByIdAndClick(String s)
+    {
+        findElement("id", s).click();
+    }
+
     public void login(String login, String Password)
     {
         openURL("/wp-login.php");
@@ -79,7 +91,7 @@ public class wordpressTest {
         findElement("id", loginFieldSelector).sendKeys(login);
         findElement("id", PasswordFieldSelector).clear();
         findElement("id", PasswordFieldSelector).sendKeys(Password);
-        findElement("id", LoginSubmitButton).click();
+        findByIdAndClick(LoginSubmitButton);
     }
 
     public void logout()
@@ -87,21 +99,26 @@ public class wordpressTest {
         findElement("xpath", LogoutSelector).click();
     }
 
+    public void publishPostWithBody(String title, String body)
+    {
+        // when
+        findByXpathAndClick(NewPostSelector);
+        findElement("xpath", PostTitleSelector).sendKeys(title);
+        findElement("xpath", PostTextSelector).sendKeys(body);
+        findByXpathAndClick(NewPostPublishSelector);
+    }
+
     @Test
     public void testShouldAddPost() throws Exception {
 
+        // given
         Random generator = new Random();
         int a = generator.nextInt(50000);
-
         String expectedPostString = "Post testowy z selenium: " + a;
         String expectedTitleString = "Tytuł testowy z selenium";
 
-        login ("szkolenieautomatyzacja", "QW12qw12");
-
-        findElement("xpath", NewPostSelector).click();
-        findElement("xpath", PostTitleSelector).sendKeys(expectedTitleString);
-        findElement("xpath", PostTextSelector).sendKeys(expectedPostString);
-        findElement("xpath", NewPostPublishSelector).click();
+        // when
+        publishPostWithBody(expectedTitleString, expectedPostString);
 
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(NoticeSelector)));
@@ -117,6 +134,8 @@ public class wordpressTest {
 
         logout();
         openURL("");
+
+        // then
         String content =  findElement("xpath", MainContent).getText();
         Assert.assertTrue(content.contains(expectedPostString));
 
