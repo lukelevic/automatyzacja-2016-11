@@ -1,31 +1,21 @@
-//package com.example.tests;
-
-import com.thoughtworks.selenium.Selenium;
+import org.junit.After;
 import org.junit.Assert;
+import org.junit.Before;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.WebDriver;
-import com.thoughtworks.selenium.webdriven.WebDriverBackedSelenium;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-
-import static org.junit.Assert.*;
-
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.concurrent.TimeUnit;
-import java.util.regex.Pattern;
-
-import static org.apache.commons.lang3.StringUtils.join;
 
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
-public class wpisTest {
+import static org.junit.Assert.fail;
+
+/**
+ * Created by Administrator on 2016-09-22.
+ */
+public class mainClass {
     private WebDriver driver;
     private String baseUrl;
     private boolean acceptNextAlert = true;
@@ -66,35 +56,39 @@ public class wpisTest {
 
     }
 
-    @Test
-    public void testIde() throws Exception {
-        // driver.manage().window().maximize();
-
+    public void openPage() {
         driver.get(baseUrl + "/");
         driver.get(baseUrl + "/wp-login.php");
+    }
 
+    public void findText() {
+        driver.findElement(By.xpath(".//*[@id='menu-posts']/a/div[3]")).click();
+        driver.findElement(By.xpath("//*[@id='post-search-input']")).sendKeys(ddd);
+        driver.findElement(By.id("search-submit")).click();
+
+        System.out.println(ddd);
+        Assert.assertTrue(driver.getPageSource().contains(ddd));
+    }
+
+    public void open() {
+        driver.findElement(By.xpath(".//*[@id='menu-posts']/a/div[3]")).click();
+        driver.findElement(By.xpath(".//*[@id='menu-posts']/ul/li[3]/a")).click();
+    }
+
+    public void addText() {
+        driver.findElement(By.id("title")).sendKeys(ddd);
+
+        driver.findElement(By.id("content-html")).click();
+        driver.findElement(By.id("content")).sendKeys(description);
+        driver.findElement(By.xpath(".//*[@id='publish']")).click();
+    }
+
+    public void logInWordpress() {
         driver.findElement(By.xpath(".//*[@id='user_login']")).clear();
         driver.findElement(By.xpath(".//*[@id='user_login']")).sendKeys("szkolenieautomatyzacja");
         driver.findElement(By.xpath(".//*[@id='user_pass']")).clear();
         driver.findElement(By.xpath(".//*[@id='user_pass']")).sendKeys("QW12qw12");
         driver.findElement(By.id("wp-submit")).click();
-        // driver.findElement(By.cssSelector("img.avatar.avatar-32")).click();
-        driver.findElement(By.xpath(".//*[@id='menu-posts']/a/div[3]")).click();
-        driver.findElement(By.xpath(".//*[@id='menu-posts']/ul/li[3]/a")).click();
-        //driver.findElement(By.xpath(".//*[@id='title-prompt-text']")).clear();
-
-        driver.findElement(By.id("title")).sendKeys(ddd);
-        // driver.findElement(By.xpath(".//*[@id='tinymce']")).clear();
-        driver.findElement(By.id("content-html")).click();
-        driver.findElement(By.id("content")).sendKeys(description);
-        driver.findElement(By.xpath(".//*[@id='publish']")).click();
-        driver.findElement(By.xpath(".//*[@id='menu-posts']/a/div[3]")).click();
-        driver.findElement(By.xpath("//*[@id='post-search-input']")).sendKeys(ddd);
-        driver.findElement(By.id("search-submit")).click();
-        //String element =  driver.findElement(By.xpath("//a[@class='row-title']")).getTagName("ariel-label");
-        System.out.println(ddd);
-        Assert.assertTrue(driver.getPageSource().contains(ddd));
-
     }
 
     @After
@@ -104,6 +98,6 @@ public class wpisTest {
         if (!"".equals(verificationErrorString)) {
             fail(verificationErrorString);
         }
+
     }
 }
-

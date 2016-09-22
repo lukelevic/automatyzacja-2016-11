@@ -37,14 +37,18 @@ public class seleniumTest {
 
     @Test
     public void testIde() throws Exception {
-
+//given
+       // insert(By.id("user_login")
         driver.get(baseUrl + "/");
         driver.get(baseUrl + "/wp-login.php");
+        //when
         driver.findElement(By.id("user_login")).clear();
         driver.findElement(By.id("user_login")).sendKeys("szkolenieautomatyzacja");
         driver.findElement(By.id("user_pass")).clear();
         driver.findElement(By.id("user_pass")).sendKeys("QW12qw12");
         driver.findElement(By.id("wp-submit")).click();
+        //then fixme
+
         driver.findElement(By.cssSelector("img.avatar.avatar-32")).click();
         //driver.findElement(By.cssSelector("button.ab-sign-out")).click();
         driver.findElement(By.xpath("//*[@id=\"wp-admin-bar-user-info\"]/div/form/button")).click();
