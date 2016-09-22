@@ -58,12 +58,11 @@ namespace SeleniumTests
             Thread.Sleep(3000);
             driver.FindElement(By.XPath("//input[@id='title']")).SendKeys("nowy_wpis-ms");
             Thread.Sleep(3000);
-            //driver.FindElement(By.ClassName("wp-editor-area")).SendKeys("tekst do wpisu");
-            //Thread.Sleep(3000);
+            driver.FindElement(By.XPath("//button[contains(.,'Tekstowy')]")).Click();
+            driver.FindElement(By.ClassName("wp-editor-area")).SendKeys("tekst do wpisu");
             driver.FindElement(By.XPath("//input[@id='publish']")).Click();
             Thread.Sleep(3000);
             driver.FindElement(By.XPath("//a[contains(.,'https://automatyzacja2016.wordpress.com/2016/09/22/nowy_wpis-ms')]")).Click();
-            //driver.FindElement(By.Name("nowy wpis-ms")).Click();
             Assert.True(driver.PageSource.Contains("nowy_wpis-ms"));
             Thread.Sleep(300);
             driver.FindElement(By.CssSelector("img.avatar.avatar-32")).Click();
