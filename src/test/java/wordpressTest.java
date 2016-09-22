@@ -78,18 +78,12 @@ public class wordpressTest {
         }
         catch (NoSuchElementException e) {  }
 
-
         driver.findElement(By.xpath("//button[@class='button me-sidebar__signout-button is-compact']")).click();
-        Thread.sleep(2000);
 
         driver.get(baseUrl);
 
-        Thread.sleep(2000);
-
         String content =  driver.findElement(By.xpath("//div[@id='content']")).getText();
         Assert.assertTrue(content.contains(expectedPostString));
-
-        Thread.sleep(1000);
 
     }
 
