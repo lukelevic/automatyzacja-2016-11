@@ -12,10 +12,10 @@ namespace TestAutomation
     {
 
        [Test, Sequential]
-        public void shouldConvertTwoStringsAndAddThem(
+        public void shouldAddTwoConvertedStrings(
             [Values("1", "2", "3")] string firstString,
             [Values("2", "3", "7")] string secondString,
-            [Values(3,5,10)] int result)
+            [Values(3, 5, 10)] int result)
         {
 
             int convertedFirstNumber = int.Parse(firstString);
@@ -23,7 +23,6 @@ namespace TestAutomation
             int sum = convertedFirstNumber + convertedSecondString;
 
             Assert.AreEqual(result, sum);
-
         }
     }
 }
