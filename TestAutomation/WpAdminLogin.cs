@@ -52,16 +52,25 @@ namespace TestAutomation
             driver.FindElement(By.Id("user_pass")).SendKeys("QW12qw12");
             driver.FindElement(By.Id("wp-submit")).Click();
             // add post
+            String TimeStamp = DateTime.Now.ToString("yyyyMMddHHmmssffff");
+            String entryTitle = "Post Rafala M @" + TimeStamp;
+            String entryContent = "Dowolny tekst w poście " + TimeStamp;
             driver.FindElement(By.XPath("//*[@id='menu-posts']/a/div[contains(text(),'Wpisy')]")).Click();
             driver.FindElement(By.XPath("//li[@id='menu-posts']//a[contains(text(),'Dodaj nowy')]")).Click();
             //driver.FindElement(By.Id("title")).Click();
-            driver.FindElement(By.Id("title")).SendKeys("Post Rafala M");
+            driver.FindElement(By.Id("title")).SendKeys(entryTitle);
             //driver.FindElement(By.Id("content-html")).Click();
-            driver.FindElement(By.Id("content")).SendKeys("Dowolny tekst w poście " + DateTime.Now.ToString("yyyyMMddHHmmssffff"));
+            driver.FindElement(By.Id("content")).SendKeys(entryContent);
+            Thread.Sleep(1000);
             driver.FindElement(By.Id("publish")).Click();
+            String entryPermalink = driver.FindElement(By.XPath("//*[@id='sample-permalink']/a")).Text;
             // logout
             driver.FindElement(By.CssSelector("img.avatar.avatar-32")).Click();
             driver.FindElement(By.CssSelector("button.ab-sign-out")).Click();
+            driver.Navigate().GoToUrl(entryPermalink);
+
+            Assert.AreEqual(entryTitle, driver.FindElement(By.ClassName("entry-title")).Text);
+            Assert.AreEqual(entryContent, driver.FindElement(By.XPath("//div[@class='entry-content']/p[1]")).Text);
         }
         private bool IsElementPresent(By by)
         {
