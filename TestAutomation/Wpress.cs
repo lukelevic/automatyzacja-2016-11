@@ -9,84 +9,45 @@ using OpenQA.Selenium.Interactions;
 namespace SeleniumTests
 {
     [TestFixture]
-    public class Wpress
+    public class Wpress : WpressBase
     {
-        private IWebDriver driver;
-        private StringBuilder verificationErrors;
-        private string baseURL;
-        private bool acceptNextAlert = true;
+        
+        
+        //[Test]
+        //public void ShouldLoginLogout()
+        //{
+                        
+        //}
 
-        [SetUp]
-        public void SetupTest()
+        [Test, Sequential]
+        public void ShouldSequentialLoginLogout(
+            [Values("1", "2", "szkolenieautomatyzacja")] string login,
+            [Values("5", "6", "QW12qw12")] string pass
+            )
         {
-            driver = new ChromeDriver();
+            LogIn(login, pass);
 
-            driver.Manage().Window.Maximize();
-
-            baseURL = "https://automatyzacja2016.wordpress.com/wp-admin";
-            verificationErrors = new StringBuilder();
         }
-
-        [TearDown]
-        public void TeardownTest()
-        {
-            try
-            {
-               // driver.Quit();
-            }
-            catch (Exception)
-            {
-                // Ignore errors if unable to close the browser
-            }
-            Assert.AreEqual("", verificationErrors.ToString());
-        }
-
+        
         [Test]
-        public void TheWpressTest()
+        public void ShouldAddNewPost()
         {
-            driver.Navigate().GoToUrl(baseURL);
-            driver.FindElement(By.Id("user_login")).Clear();
-            driver.FindElement(By.Id("user_login")).SendKeys("szkolenieautomatyzacja");
-            driver.FindElement(By.Id("user_pass")).Clear();
-            driver.FindElement(By.Id("user_pass")).SendKeys("QW12qw12");
-            driver.FindElement(By.Id("wp-submit")).Click();
-            Thread.Sleep(2000);
-            driver.FindElement(By.CssSelector("img.avatar.avatar-32")).Click();
-            driver.FindElement(By.CssSelector("button.ab-sign-out")).Click();
-        }
 
-        [Test]
-        public void TheWpressAddNewPost()
-        {
-            driver.Navigate().GoToUrl(baseURL);
-
-            driver.FindElement(By.Id("user_login")).Clear();
-            driver.FindElement(By.Id("user_login")).SendKeys("szkolenieautomatyzacja");
-            driver.FindElement(By.Id("user_pass")).Clear();
-            driver.FindElement(By.Id("user_pass")).SendKeys("QW12qw12");
-            driver.FindElement(By.Id("wp-submit")).Click();
-            Thread.Sleep(2000);
-            driver.FindElement(By.LinkText("Wpisy")).Click();
-            // driver.FindElement(By.XPath("//*[@id=\"menu - posts\"]/a/div[2]")).Click();
-            Thread.Sleep(2000);
-            //  driver.FindElement(By.XPath("//*[@id=\"wpbody - content\"]/div[3]/h1/a")).Click();
-            driver.FindElement(By.LinkText("Dodaj nowy")).Click();
-            Thread.Sleep(2000);
-
-            var title = "adaml" + DateTime.Now;
-            driver.FindElement(By.Name("post_title")).SendKeys(title);
-            Thread.Sleep(2000);
-            //  driver.FindElement(By.Id("tinymce")).SendKeys("jakis tekst");
-            driver.FindElement(By.Id("publish")).Click();
-            Thread.Sleep(2000);
-
-            var linkByTitle = "https://automatyzacja2016.wordpress.com/2016/09/22/" ;
-            driver.FindElement(By.XPath("//a[contains(.,'" +linkByTitle+ "')]")).Click();
-            Assert.Pass("przeszlo");
+            ClickBy(By.LinkText("Wpisy"), 2);
+            ClickBy(By.LinkText("Dodaj nowy"), 2);
             
-            driver.FindElement(By.CssSelector("img.avatar.avatar-32")).Click();
-            driver.FindElement(By.CssSelector("button.ab-sign-out")).Click();
+            var title = "adaml" + DateTime.Now;
+            InsertTextBy(By.Name("post_title"), title);
+            ClickBy(By.Id("publish"), 5);
+            
+            var linkByTitle = "https://automatyzacja2016.wordpress.com/2016/09/22/";
+            var newPost = driver.FindElement(By.XPath("//a[contains(.,'" + linkByTitle + "')]"));
+
+            Assert.IsNotNull(newPost);
+            
         }
+
+        
 
         private bool IsElementPresent(By by)
         {
