@@ -59,19 +59,20 @@ namespace SeleniumTests
             //  driver.FindElement(By.XPath("//*[@id=\"wpbody - content\"]/div[3]/h1/a")).Click();
             driver.FindElement(By.LinkText("Dodaj nowy")).Click();
             Thread.Sleep(2000);
-            driver.FindElement(By.Name("post_title")).SendKeys("nowy tytul ala7");
+            driver.FindElement(By.Name("post_title")).SendKeys("nowy tytul ala" +' '+ DateTime.Now);
             Thread.Sleep(2000);
           //  driver.FindElement(By.Id("tinymce")).SendKeys("jakis tekst");
             driver.FindElement(By.Id("publish")).Click();
             Thread.Sleep(2000);
-            driver.FindElement(By.XPath("//a[contains(.,'https://automatyzacja2016.wordpress.com/2016/09/22/nowy-tytul-ala7')]")).Click();
+            driver.FindElement(By.XPath("//a[contains(.,'https://automatyzacja2016.wordpress.com/2016/09/22/nowy-tytul-ala')]")).Click();
             //driver.FindElement(By.LinkText("https://automatyzacja2016.wordpress.com/2016/09/22/nowy-tytul-ala4")).Click();
-            Assert.Pass("przeszlo");
-
+            Thread.Sleep(2000);
+           // driver.FindElement(By.XPath("//img[@class='avatar avatar-32']")).Click();
   
-
+           
             driver.FindElement(By.CssSelector("img.avatar.avatar-32")).Click();
             driver.FindElement(By.CssSelector("button.ab-sign-out")).Click();
+            Assert.Pass("przeszlo");
         }
 
  

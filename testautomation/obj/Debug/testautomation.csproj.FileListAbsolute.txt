@@ -8,4 +8,3 @@ C:\workspace\automatyzacja-2016-11\testautomation\bin\Debug\WebDriver.xml
 C:\workspace\automatyzacja-2016-11\testautomation\bin\Debug\WebDriver.Support.xml
 C:\workspace\automatyzacja-2016-11\testautomation\obj\Debug\testautomation.dll
 C:\workspace\automatyzacja-2016-11\testautomation\obj\Debug\testautomation.pdb
-C:\workspace\automatyzacja-2016-11\testautomation\obj\Debug\testautomation.csprojResolveAssemblyReference.cache
