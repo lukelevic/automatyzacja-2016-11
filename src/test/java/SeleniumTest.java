@@ -66,17 +66,22 @@ public class SeleniumTest {
 
         driver.findElement(By.xpath(".//*[@id='title']")).sendKeys(title);
         driver.findElement(By.xpath(".//*[@id='content-html']")).click();
-        driver.findElement(By.xpath(".//*[@id='content']")).sendKeys(post.toString());
+        driver.findElement(By.xpath(".//*[@id='content']")).sendKeys(post);
         driver.findElement(By.xpath(".//*[@id='publish']")).click();
 
         try {
-            Thread.sleep(2000);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
         //log out
         driver.findElement(By.cssSelector("img.avatar.avatar-32")).click();
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         driver.findElement(By.cssSelector("button.ab-sign-out")).click();
 
         //check if post is added
@@ -87,8 +92,8 @@ public class SeleniumTest {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        Assert.assertTrue("Nie ma postu o tytule: "+title.toString(),driver.getPageSource().contains(title.toString()));
-        Assert.assertTrue("Nie ma postu o tresci: "+post.toString(),driver.getPageSource().contains(post.toString()));
+        Assert.assertTrue("Nie ma postu o tytule: "+title,driver.getPageSource().contains(title));
+        Assert.assertTrue("Nie ma postu o tresci: "+post,driver.getPageSource().contains(post));
     }
 
     private boolean isElementPresent(By by) {
