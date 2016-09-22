@@ -41,9 +41,9 @@ namespace testautomation
             // wykonac akcje
             Console.WriteLine("Zawartosc listy", lista);
             //sprawdzic wynik
-            Assert.AreEqual(1,lista.Count);
+            //Assert.AreEqual(1,lista.Count);
             //Assert.areEqual(lista.size(),1);
-            //Assert.False(lista.Contains("element"))
+            Assert.False(lista.Contains("element"));
         }
 
 
