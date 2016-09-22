@@ -3,6 +3,7 @@ using System.Text;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.Chrome;
 
 namespace SeleniumTests
 {
@@ -17,7 +18,7 @@ namespace SeleniumTests
         [SetUp]
         public void SetupTest()
         {
-            driver = new FirefoxDriver();
+            driver = new ChromeDriver(@"C:\repozytorium\automatyzacja-2016-11\");
             baseURL = "https://wordpress.com/";
             verificationErrors = new StringBuilder();
         }
@@ -48,22 +49,7 @@ namespace SeleniumTests
             driver.FindElement(By.Id("wp-submit")).Click();
             // ERROR: Caught exception [ERROR: Unsupported command [selectWindow | name=oktab35577322677369017 | ]]
             driver.FindElement(By.CssSelector("span.masterbar__item-content")).Click();
-            // ERROR: Caught exception [ERROR: Unsupported command [selectWindow | name=oktab35577322677369017 | ]]
-            driver.FindElement(By.CssSelector("img.gravatar")).Click();
-            // ERROR: Caught exception [ERROR: Unsupported command [selectWindow | name=oktab35577322677369017 | ]]
-            driver.FindElement(By.CssSelector("img.gravatar")).Click();
-            // ERROR: Caught exception [ERROR: Unsupported command [selectWindow | name=oktab35577322677369017 | ]]
-            driver.FindElement(By.CssSelector("img.gravatar")).Click();
-            // ERROR: Caught exception [ERROR: Unsupported command [selectWindow | name=oktab35577322677369017 | ]]
-            driver.FindElement(By.CssSelector("svg.gridicon.gridicons-bell  > g > path")).Click();
-            // ERROR: Caught exception [ERROR: Unsupported command [selectWindow | name=oktab35577322677369017 | ]]
-            driver.FindElement(By.CssSelector("img.gravatar")).Click();
-            // ERROR: Caught exception [ERROR: Unsupported command [selectWindow | name=oktab35577322677369017 | ]]
-            driver.FindElement(By.CssSelector("svg.gridicon.gridicons-create")).Click();
-            // ERROR: Caught exception [ERROR: Unsupported command [selectWindow | name=oktab35577322677369017 | ]]
-            driver.FindElement(By.CssSelector("svg.gridicon.gridicons-user-circle")).Click();
-            // ERROR: Caught exception [ERROR: Unsupported command [selectWindow | name=oktab35577322677369017 | ]]
-            driver.FindElement(By.CssSelector("span.profile-gravatar__edit-label-wrap")).Click();
+                 
             // ERROR: Caught exception [ERROR: Unsupported command [selectWindow | name=oktab35577322677369017 | ]]
             driver.FindElement(By.XPath("(//button[@type='button'])[2]")).Click();
         }
