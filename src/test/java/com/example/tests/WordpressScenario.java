@@ -1,10 +1,14 @@
 package com.example.tests;
 
+import com.thoughtworks.selenium.webdriven.commands.WaitForCondition;
 import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.text.SimpleDateFormat;
@@ -29,9 +33,6 @@ public class WordpressScenario {
 
     public void KliknijCss(String css) {
         driver.findElement(By.cssSelector(css)).click();
-    }
-    public void KliknijSelector(String selector){
-        driver.findElement(By.id(selector)).click();
     }
 
     public void WstawTekst(By gdzie, String tekst) {
@@ -71,9 +72,11 @@ public class WordpressScenario {
         //Wylogowywanie
         driver.get(baseUrl + "/wp-admin");
         KliknijCss("img.avatar.avatar-32");
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        //new WebDriverWait(driver,2).until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"wp-admin-bar-user-info\"]/div/form/button")));
+        //KliknijXpath("//*[@id=\"wp-admin-bar-user-info\"]/div/form/button");
 
-        KliknijXpath("//*[@id=\"wp-admin-bar-user-info\"]/div/form/button");
+        new WebDriverWait(driver,2).until(ExpectedConditions.elementToBeClickable(By.cssSelector("button.ab-sign-out")));
+        KliknijCss("button.ab-sign-out");
         driver.quit();
     }
 }
