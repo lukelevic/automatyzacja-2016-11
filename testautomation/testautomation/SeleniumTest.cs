@@ -9,10 +9,10 @@ using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Chrome;
 
-namespace AddNewComment
+namespace SeleniumTest
 {
     [TestFixture]
-    public class AddNewComment
+    public class SeleniumTest
     {
         private IWebDriver driver;
         private StringBuilder verificationErrors;
@@ -31,12 +31,18 @@ namespace AddNewComment
         [Test]
         public void AddNewCommentTest()
         {
+            // given
             driver.Navigate().GoToUrl("https://automatyzacja2016.wordpress.com/wp-admin");
+
+            // when
             driver.FindElement(By.Id("user_login")).Clear();
             driver.FindElement(By.Id("user_login")).SendKeys("szkolenieautomatyzacja");
             driver.FindElement(By.Id("user_pass")).Clear();
             driver.FindElement(By.Id("user_pass")).SendKeys("QW12qw12");
             driver.FindElement(By.Id("wp-submit")).Click();
+
+            // then
+
             driver.FindElement(By.XPath("//*[@id=\"menu-posts\"]/a")).Click();
             driver.FindElement(By.XPath("//*[@id=\"wpbody-content\"]/div[3]/h1/a")).Click();
             driver.FindElement(By.Name("post_title")).SendKeys("my Title");
