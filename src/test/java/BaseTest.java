@@ -20,7 +20,7 @@ public class BaseTest {
     protected StringBuffer verificationErrors = new StringBuffer();
 
     @Before
-    public void setUp() throws Exception {
+    protected void setUp() throws Exception {
 //        driver = new ChromeDriver(@"C:\Workspace\automatyzacja-2016-11\src\main\resources");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -29,7 +29,7 @@ public class BaseTest {
     }
 
     @After
-    public void tearDown() throws Exception {
+    protected void tearDown() throws Exception {
         driver.quit();
         String verificationErrorString = verificationErrors.toString();
         if (!"".equals(verificationErrorString)) {
@@ -37,14 +37,14 @@ public class BaseTest {
         }
     }
 
-    public void setBaseUrl(String baseUrl) {
+    protected void setBaseUrl(String baseUrl) {
         this.baseUrl = baseUrl;
     }
-    public void open(String url) {
+    protected void open(String url) {
         driver.get(baseUrl+url);
     }
 
-    public void login(String user, String password) {
+    protected void login(String user, String password) {
         driver.findElement(By.id("user_login")).clear();
         driver.findElement(By.id("user_login")).sendKeys(user);
         driver.findElement(By.id("user_pass")).clear();
@@ -54,7 +54,7 @@ public class BaseTest {
             wait.until(ExpectedConditions.titleContains("Kokpit"));
     }
 
-    public void logout() {
+    protected void logout() {
         driver.findElement(By.cssSelector("img.avatar.avatar-32")).click();
 
         WebDriverWait wait = new WebDriverWait(driver, 2);
@@ -62,7 +62,7 @@ public class BaseTest {
 
         driver.findElement(By.cssSelector("button.ab-sign-out")).click();
     }
-    public boolean isElementPresent(By by) {
+    protected boolean isElementPresent(By by) {
         try {
             driver.findElement(by);
             return true;
@@ -71,7 +71,7 @@ public class BaseTest {
         }
     }
 
-    public boolean isAlertPresent() {
+    protected boolean isAlertPresent() {
         try {
             driver.switchTo().alert();
             return true;
@@ -80,7 +80,7 @@ public class BaseTest {
         }
     }
 
-    public String closeAlertAndGetItsText() {
+    protected String closeAlertAndGetItsText() {
         try {
             Alert alert = driver.switchTo().alert();
             String alertText = alert.getText();
@@ -94,17 +94,9 @@ public class BaseTest {
             acceptNextAlert = true;
         }
     }
-    public String getRandomString() {
+    protected String getRandomString() {
         Random randomNumber = new Random();
         return String.valueOf(randomNumber.nextInt(1000000));
     }
 
-    public void addNewPost(String title, String post) {
-        driver.findElement(By.xpath(".//*[@id='menu-posts']/a/div[3]")).click();
-        driver.findElement(By.xpath(".//*[@id='menu-posts']/ul/li[3]/a")).click();
-        driver.findElement(By.xpath(".//*[@id='title']")).sendKeys(title);
-        driver.findElement(By.xpath(".//*[@id='content-html']")).click();
-        driver.findElement(By.xpath(".//*[@id='content']")).sendKeys(post);
-        driver.findElement(By.xpath(".//*[@id='publish']")).click();
-    }
 }
