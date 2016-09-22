@@ -17,7 +17,7 @@ import java.util.List;
 
 @RunWith(JUnitParamsRunner.class)
 public class firstTest{
-    private List<String> Lista = new ArrayList<String>();
+    protected List<String> Lista = new ArrayList<String>();
 
     //@Before   przed testem
     @Before
