@@ -19,7 +19,7 @@ public class JunitparamTest {
         int pp2 = Integer.parseInt(p2);
 
 
-        Assert.assertEquals(pp1+pp2, p3 );
+        Assert.assertEquals(pp1+pp2, p2 );
 
 }
 }
