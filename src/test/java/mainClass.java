@@ -25,6 +25,9 @@ public class mainClass {
     private Date data;
     private String reportDate;
     private String ddd;
+    private String login;
+    private String password;
+
 
     @Before
     public void setUp() throws Exception {
@@ -36,14 +39,10 @@ public class mainClass {
         options.addArguments("--start-maximized");
         driver = new ChromeDriver(options);
 
-        //driver = new ChromeDriver();
-        //WebDriver driver = new FirefoxDriver();
         baseUrl = "https://automatyzacja2016.wordpress.com/";
-        // selenium = new WebDriverBackedSelenium(driver, baseUrl);
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         java.util.Date date = new java.util.Date();
         data = new Timestamp(date.getTime());
-        // System.out.println(data);
 
 
         String reportDate = data.toString();
@@ -56,13 +55,15 @@ public class mainClass {
 
     }
 
+
     public void openPage() {
         driver.get(baseUrl + "/");
         driver.get(baseUrl + "/wp-login.php");
     }
 
     public void findText() {
-        driver.findElement(By.xpath(".//*[@id='menu-posts']/a/div[3]")).click();
+        clickElement(".//*[@id='menu-posts']/a/div[3]");
+        //driver.findElement(By.xpath(".//*[@id='menu-posts']/a/div[3]")).click();
         driver.findElement(By.xpath("//*[@id='post-search-input']")).sendKeys(ddd);
         driver.findElement(By.id("search-submit")).click();
 
@@ -71,8 +72,8 @@ public class mainClass {
     }
 
     public void open() {
-        driver.findElement(By.xpath(".//*[@id='menu-posts']/a/div[3]")).click();
-        driver.findElement(By.xpath(".//*[@id='menu-posts']/ul/li[3]/a")).click();
+        clickElement(".//*[@id='menu-posts']/a/div[3]");
+        clickElement(".//*[@id='menu-posts']/ul/li[3]/a");
     }
 
     public void addText() {
@@ -83,12 +84,24 @@ public class mainClass {
         driver.findElement(By.xpath(".//*[@id='publish']")).click();
     }
 
-    public void logInWordpress() {
-        driver.findElement(By.xpath(".//*[@id='user_login']")).clear();
-        driver.findElement(By.xpath(".//*[@id='user_login']")).sendKeys("szkolenieautomatyzacja");
-        driver.findElement(By.xpath(".//*[@id='user_pass']")).clear();
-        driver.findElement(By.xpath(".//*[@id='user_pass']")).sendKeys("QW12qw12");
+    public void logInWordpress(String login, String password) {
+        clearElement(".//*[@id='user_login']");
+        //driver.findElement(By.xpath(".//*[@id='user_login']")).clear();
+        driver.findElement(By.xpath(".//*[@id='user_login']")).sendKeys(login);
+        clearElement(".//*[@id='user_pass']");
+        driver.findElement(By.xpath(".//*[@id='user_pass']")).sendKeys(password);
         driver.findElement(By.id("wp-submit")).click();
+
+
+    }
+
+
+    private void clearElement(String path) {
+        driver.findElement(By.xpath(path)).clear();
+    }
+
+    private void clickElement(String pathh) {
+        driver.findElement(By.xpath(pathh)).click();
     }
 
     @After
@@ -100,4 +113,5 @@ public class mainClass {
         }
 
     }
+
 }
