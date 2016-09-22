@@ -23,7 +23,7 @@ public class FirstUnitTest {
     @Test
     public void testCaseNo1() {
         Assert.assertTrue(this.list.size() == 10);
-        Assert.assertEquals("string0", this.list.get(0));
+        Assert.assertEquals("string", this.list.get(0));
     }
 
     @Test
