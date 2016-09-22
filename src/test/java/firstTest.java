@@ -65,9 +65,20 @@ public class firstTest{
         int s = Integer.parseInt(s1);
         //int s = a + b;
 
-        Assert.assertEquals(a+b,s);
+        Assert.assertEquals(a + b, s);
+    }
+        @Test
+        @Parameters({"5,2,3", "6,2,4"})
+        public void paramsInAnnotation (String d1, String f1, Integer g1){
 
+
+            int kk = Integer.parseInt(d1);
+            int ll = Integer.parseInt(f1);
+           int ww = g1;
+            //int s = a + b;
+
+            Assert.assertEquals(kk - ll, ww);
+        }
     }
 
-}
 
