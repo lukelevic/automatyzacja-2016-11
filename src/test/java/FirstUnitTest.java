@@ -49,6 +49,18 @@ public class FirstUnitTest {
     }
 
     @Test
+    public void testAddSize()
+    {
+        int initialSize = myList.size();
+        int afterSize;
+
+        myList.add(TEST_STRING);
+        afterSize = myList.size();
+
+        Assert.assertEquals(initialSize+1, afterSize);
+    }
+
+    @Test
     public void testRemove()
     {
         myList.add(TEST_STRING2);
@@ -69,5 +81,5 @@ public class FirstUnitTest {
         Assert.assertEquals(result, expectedValue);
 
     }
-    
+
 }
