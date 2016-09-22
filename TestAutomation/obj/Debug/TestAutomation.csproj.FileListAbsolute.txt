@@ -6,3 +6,5 @@ C:\repozytorium\automatyzacja-2016-11\TestAutomation\obj\Debug\TestAutomation.cs
 C:\repozytorium\automatyzacja-2016-11\TestAutomation\obj\Debug\TestAutomation.dll
 C:\repozytorium\automatyzacja-2016-11\TestAutomation\obj\Debug\TestAutomation.pdb
 C:\repozytorium\automatyzacja-2016-11\TestAutomation\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\repozytorium\automatyzacja-2016-11\TestAutomation\bin\Debug\WebDriver.dll
+C:\repozytorium\automatyzacja-2016-11\TestAutomation\bin\Debug\WebDriver.xml
