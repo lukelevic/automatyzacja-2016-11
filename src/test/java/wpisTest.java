@@ -90,6 +90,7 @@ private String reportDate;
         driver.findElement(By.xpath("//*[@id='post-search-input']")).sendKeys(ddd);
         driver.findElement(By.id("search-submit")).click();
        //String element =  driver.findElement(By.xpath("//a[@class='row-title']")).getTagName("ariel-label");
+        System.out.println(ddd);
         Assert.assertTrue(driver.getPageSource().contains(ddd));
 
     }
