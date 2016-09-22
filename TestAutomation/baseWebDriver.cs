@@ -28,18 +28,18 @@ namespace TestAutomation
         protected void login(string userName, string password)
         {
 
-            driver.FindElement(By.Id("user_login")).Click();
-            driver.FindElement(By.Id("user_login")).Clear();
-            driver.FindElement(By.Id("user_login")).SendKeys(userName);
-            driver.FindElement(By.Id("user_pass")).Clear();
-            driver.FindElement(By.Id("user_pass")).SendKeys(password);
-            driver.FindElement(By.Id("wp-submit")).Click();
+            click(By.Id("user_login"));
+            insert(By.Id("user_login"),userName);
+            insert(By.Id("user_pass"), password);
+            click(By.Id("wp-submit"));
+
         }
 
         protected void LogOut()
         {
-            driver.FindElement(By.ClassName("avatar avatar-32")).Click();
-            driver.FindElement(By.ClassName("ab-sign-out")).Click();
+            click(By.ClassName("avatar avatar-32"));
+            click(By.ClassName("ab-sign-out"));
+           
         }
         protected void openPage(string url)
         {
@@ -55,6 +55,7 @@ namespace TestAutomation
 
         protected void insert(By by, string text)
         {
+       
             driver.FindElement(by).Clear();
             driver.FindElement(by).SendKeys(text);
         }
