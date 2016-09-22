@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Created by Administrator on 2016-09-21.
  */
-public class FirstUnitClass {
+public class FirstUnitClassTest {
 
     List<String> listOne;
 

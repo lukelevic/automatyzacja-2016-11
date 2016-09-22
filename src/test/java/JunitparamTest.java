@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 
 
 @RunWith(JUnitParamsRunner.class)
-public class junitparam {
+public class JunitparamTest {
 
 
     @Test
@@ -17,6 +17,8 @@ public class junitparam {
 
         int pp1 = Integer.parseInt(p1);
         int pp2 = Integer.parseInt(p2);
+
+
         Assert.assertEquals(pp1+pp2, p3 );
 
 }
