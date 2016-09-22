@@ -3,6 +3,8 @@ import static org.junit.Assert.*;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class SeleniumTest {
     private WebDriver driver;
@@ -14,7 +16,7 @@ public class SeleniumTest {
     public void setUp() throws Exception {
 
 
-        //given
+
        System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
 
         driver = new ChromeDriver(); //("C:\\chromedriver.exe");
@@ -28,36 +30,45 @@ public class SeleniumTest {
 
     @Test
     public void ShouldLoginWithCredential() throws Exception {
-
+        //given
+        insert(By.id("user_login"), "szkolenieautomatyzacja");
+        insert(By.id("user_pass"), "QW12qw12");
+        click(By.id("wp-submit"));
 
 
 
         //when
         //TODO login(user,password)
-        insert(By.id("user_login"), "szkolenieautomatyzacja");
-        insert(By.id("user_pass"), "QW12qw12");
-        click(By.id("wp-submit"));
+
 
         //than
 
+
         click(By.xpath(".//*[@id='wp-admin-bar-ab-new-post']/a"));
-        Thread.sleep(3000);
-        xpathSendKey(By.xpath(".//*[@id='primary']/div/div[2]/div[1]/div[2]/div[3]/div/textarea"));
-        Thread.sleep(3000);
+      //  Thread.sleep(3000);
+        xpathSendKey(".//*[@id='primary']/div/div[2]/div[1]/div[2]/div[3]/div/textarea");
+     // Thread.sleep(3000);
         click(By.xpath(" .//*[@id='primary']/div/div[2]/div[2]/div[2]/div[1]/div[3]/div/button[1]"));
-        Thread.sleep(1000);
+       // Thread.sleep(1000);
         click(By.xpath(".//*[@id='primary']/div/div[2]/div[1]/div[2]/div[2]/div/div/a"));
-        Thread.sleep(3000);
+       // Thread.sleep(3000);
         Assert.assertTrue("jakubg", driver.getPageSource().contains("jakubg"));
         System.out.println("Jest git!!!!!!!!!!!!!!!!!");
 
+
+
+
     }
 
-    private void xpathSendKey(By xpath) {
-        driver.findElement(xpath).sendKeys("jakubg");
+    private void xpathSendKey(String xpathExpression ) {
+        WebDriverWait waitN = new WebDriverWait(driver, 10);
+        waitN.until(ExpectedConditions.elementToBeClickable(By.xpath(xpathExpression)));
+        driver.findElement(By.xpath(xpathExpression)).sendKeys("jakubg");
     }
 
     private void click(By xpath) {
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        wait.until(ExpectedConditions.elementToBeClickable(xpath));
         driver.findElement(xpath).click();
     }
 
