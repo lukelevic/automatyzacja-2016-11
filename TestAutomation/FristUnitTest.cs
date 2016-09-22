@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using NUnit.Framework;
 
@@ -34,7 +31,7 @@ namespace TestAutomation
         [Test]
         public void IsRemovedFromList()
         {
-            //list.Remove("C");
+            list.Remove("C");
             var result = list.Contains("C");
             Assert.AreEqual(result, false);
         }
