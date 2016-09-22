@@ -7,7 +7,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(JUnitParamsRunner.class)
 
-public class Dodawanie {
+public class DodawanieTest {
     @Test
     @Parameters({"1,2,3", "2,3,5","3,7,10"})
     public void suma(String p1, String p2, Integer p3){
