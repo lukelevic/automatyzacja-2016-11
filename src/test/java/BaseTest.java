@@ -24,6 +24,8 @@ public class BaseTest {
         driver.findElement(By.id("user_pass")).clear();
         driver.findElement(By.id("user_pass")).sendKeys(password);
         driver.findElement(By.id("wp-submit")).click();
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+            wait.until(ExpectedConditions.titleContains("Kokpit"));
     }
 
     public void logout() {

@@ -31,8 +31,9 @@ public class SeleniumTest extends BaseTest {
     public void shouldLogIntoPage() throws Exception {
         driver.get(baseUrl + "/wp-admin");
         login("szkolenieautomatyzacja", "QW12qw12");
+        Assert.assertTrue(driver.getTitle().contains("Kokpit"));
         logout();
-//        Assert.assertEquals(driver.getTitle(),"Obserwowanie");
+        Assert.assertTrue(driver.getTitle().contains("WordPress.com: Create a free website or blog"));
     }
 
     @After
@@ -47,30 +48,22 @@ public class SeleniumTest extends BaseTest {
     @Test
     public void ShouldAddNewPost() {
         Random randomId = new Random();
-        String title = "Moj nowy post"+String.valueOf(randomId.nextInt(1000000));
-        String post ="Test Lukasz"+String.valueOf(randomId.nextInt(1000000));
+        String title = "Title:"+String.valueOf(randomId.nextInt(1000000));
+        String post ="Text:"+String.valueOf(randomId.nextInt(1000000));
 
         open("/wp-admin");
         login("szkolenieautomatyzacja", "QW12qw12");
 
         addNewPost(title, post);
 
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
         logout();
 
         //check if post is added
         open("");
 
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        WebDriverWait wait = new WebDriverWait(driver, 2);
+            wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(".//*[@id='masthead']/hgroup/h1/a")));
+
         Assert.assertTrue("Nie ma postu o tytule: "+title,driver.getPageSource().contains(title));
         Assert.assertTrue("Nie ma postu o tresci: "+post,driver.getPageSource().contains(post));
     }
