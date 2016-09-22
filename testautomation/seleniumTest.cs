@@ -61,7 +61,9 @@ namespace SeleniumTests
             Thread.Sleep(2000);
             driver.FindElement(By.Name("post_title")).SendKeys("nowy tytul ala" +' '+ DateTime.Now);
             Thread.Sleep(2000);
-          //  driver.FindElement(By.Id("tinymce")).SendKeys("jakis tekst");
+            //  driver.FindElement(By.Id("tinymce")).SendKeys("jakis tekst");
+            driver.FindElement(By.Id("content-html")).Click();
+            driver.FindElement(By.Id("content")).SendKeys("raz dwa trzy");
             driver.FindElement(By.Id("publish")).Click();
             Thread.Sleep(2000);
             driver.FindElement(By.XPath("//a[contains(.,'https://automatyzacja2016.wordpress.com/2016/09/22/nowy-tytul-ala')]")).Click();
