@@ -1,33 +1,82 @@
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
-using NUnit.Framework;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Firefox;
+using System.Threading.Tasks;
 using OpenQA.Selenium.Chrome;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using TestAutomation;
+using OpenQA.Selenium;
+using NUnit.Framework;
 
-namespace SeleniumTests 
+namespace TestAutomation
 {
-    [TestFixture]
-    public class Scenario : baseWebDriver
+    public class Scenario
     {
-                                      
-        [Test]
-        public void shouldAddNewPost()
+        protected IWebDriver driver;
+
+        protected void addPost(string title, string content)
         {
-            //given
-            string title = "nowy post";
-            string content = "blablabla";
+            driver.FindElement(By.Id("title")).SendKeys(title);
+            driver.FindElement(By.Id("content")).SendKeys(content);
+            driver.FindElement(By.Id("save-post")).Click();
+        }
 
-            //when
-            addPost(title, content);
+        protected bool checkIfLoggedIn()
+        {
+            if (driver.PageSource.Contains("Kokpit")) return true;
+            else return false;
+                
+        }
 
-            //assert
-            click(By.ClassName("view-all"));
-            NUnit.Framework.Assert.AreEqual(true, driver.PageSource.Contains(title));
-                        
+        protected void login(string userName, string password)
+        {
+
+            click(By.Id("user_login"));
+            insert(By.Id("user_login"),userName);
+            insert(By.Id("user_pass"), password);
+            click(By.Id("wp-submit"));
+
+        }
+
+        protected void LogOut()
+        {
+            click(By.ClassName("avatar avatar-32"));
+            click(By.ClassName("ab-sign-out"));
+           
+        }
+        protected void openPage(string url)
+        {
+            driver.Navigate().GoToUrl(url);
+            driver.Manage().Window.Maximize();
+        }
+       
+
+        protected void click(By by)
+        {
+            driver.FindElement(by).Click();
+        }
+
+        protected void insert(By by, string text)
+        {
+       
+            driver.FindElement(by).Clear();
+            driver.FindElement(by).SendKeys(text);
+        }
+
+
+
+        [SetUp]
+        protected void setupTest()
+        {
+            driver = new ChromeDriver(@"C:\repo\automatyzacja-2016-11\");
+            driver.Navigate().GoToUrl("https://automatyzacja2016.wordpress.com/wp-admin");
+            driver.Manage().Window.Maximize();
+            
+        }
+
+        [TearDown]
+        public void TeardownTest()
+        {
+            driver.Close();
         }
     }
 }
-

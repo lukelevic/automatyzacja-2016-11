@@ -6,3 +6,12 @@ C:\repozytorium\automatyzacja-2016-11\UnitTestProject1\obj\Debug\UnitTestProject
 C:\repozytorium\automatyzacja-2016-11\UnitTestProject1\obj\Debug\UnitTestProject1.pdb
 C:\repozytorium\automatyzacja-2016-11\UnitTestProject1\bin\Debug\nunit.framework.dll
 C:\repozytorium\automatyzacja-2016-11\UnitTestProject1\bin\Debug\nunit.framework.xml
+C:\repo\automatyzacja-2016-11\UnitTestProject1\bin\Debug\UnitTestProject1.dll
+C:\repo\automatyzacja-2016-11\UnitTestProject1\bin\Debug\UnitTestProject1.pdb
+C:\repo\automatyzacja-2016-11\UnitTestProject1\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\repo\automatyzacja-2016-11\UnitTestProject1\bin\Debug\nunit.framework.dll
+C:\repo\automatyzacja-2016-11\UnitTestProject1\bin\Debug\nunit.framework.xml
+C:\repo\automatyzacja-2016-11\UnitTestProject1\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
+C:\repo\automatyzacja-2016-11\UnitTestProject1\obj\Debug\UnitTestProject1.csprojResolveAssemblyReference.cache
+C:\repo\automatyzacja-2016-11\UnitTestProject1\obj\Debug\UnitTestProject1.dll
+C:\repo\automatyzacja-2016-11\UnitTestProject1\obj\Debug\UnitTestProject1.pdb

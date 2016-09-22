@@ -53,10 +53,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="baseWebDriver.cs" />
+    <Compile Include="Scenario.cs" />
     <Compile Include="firstUnitTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Scenario.cs" />
+    <Compile Include="SeleniumTests.cs" />
     <Compile Include="SumOfStrings.cs" />
   </ItemGroup>
   <ItemGroup>

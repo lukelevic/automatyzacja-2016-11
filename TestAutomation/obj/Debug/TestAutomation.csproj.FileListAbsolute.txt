@@ -8,3 +8,14 @@ C:\repozytorium\automatyzacja-2016-11\TestAutomation\obj\Debug\TestAutomation.pd
 C:\repozytorium\automatyzacja-2016-11\TestAutomation\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
 C:\repozytorium\automatyzacja-2016-11\TestAutomation\bin\Debug\WebDriver.dll
 C:\repozytorium\automatyzacja-2016-11\TestAutomation\bin\Debug\WebDriver.xml
+C:\repo\automatyzacja-2016-11\TestAutomation\bin\Debug\TestAutomation.dll
+C:\repo\automatyzacja-2016-11\TestAutomation\bin\Debug\TestAutomation.pdb
+C:\repo\automatyzacja-2016-11\TestAutomation\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\repo\automatyzacja-2016-11\TestAutomation\bin\Debug\nunit.framework.dll
+C:\repo\automatyzacja-2016-11\TestAutomation\bin\Debug\WebDriver.dll
+C:\repo\automatyzacja-2016-11\TestAutomation\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
+C:\repo\automatyzacja-2016-11\TestAutomation\bin\Debug\nunit.framework.xml
+C:\repo\automatyzacja-2016-11\TestAutomation\bin\Debug\WebDriver.xml
+C:\repo\automatyzacja-2016-11\TestAutomation\obj\Debug\TestAutomation.csprojResolveAssemblyReference.cache
+C:\repo\automatyzacja-2016-11\TestAutomation\obj\Debug\TestAutomation.dll
+C:\repo\automatyzacja-2016-11\TestAutomation\obj\Debug\TestAutomation.pdb
