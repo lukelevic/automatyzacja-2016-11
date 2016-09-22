@@ -21,6 +21,8 @@ namespace TestAutomation
         public void SetupTest()
         {
             driver = new ChromeDriver();
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(15));
+            driver.Manage().Window.Maximize();
             baseURL = "https://automatyzacja2016.wordpress.com/";
             verificationErrors = new StringBuilder();
         }
@@ -42,12 +44,22 @@ namespace TestAutomation
         [Test]
         public void TheIdeExportTest()
         {
+            // login
             driver.Navigate().GoToUrl(baseURL + "/wp-login.php");
             driver.FindElement(By.Id("user_login")).Clear();
             driver.FindElement(By.Id("user_login")).SendKeys("szkolenieautomatyzacja");
             driver.FindElement(By.Id("user_pass")).Clear();
             driver.FindElement(By.Id("user_pass")).SendKeys("QW12qw12");
             driver.FindElement(By.Id("wp-submit")).Click();
+            // add post
+            driver.FindElement(By.XPath("//*[@id='menu-posts']/a/div[contains(text(),'Wpisy')]")).Click();
+            driver.FindElement(By.XPath("//li[@id='menu-posts']//a[contains(text(),'Dodaj nowy')]")).Click();
+            //driver.FindElement(By.Id("title")).Click();
+            driver.FindElement(By.Id("title")).SendKeys("Post Rafala M");
+            //driver.FindElement(By.Id("content-html")).Click();
+            driver.FindElement(By.Id("content")).SendKeys("Dowolny tekst w poście " + DateTime.Now.ToString("yyyyMMddHHmmssffff"));
+            driver.FindElement(By.Id("publish")).Click();
+            // logout
             driver.FindElement(By.CssSelector("img.avatar.avatar-32")).Click();
             driver.FindElement(By.CssSelector("button.ab-sign-out")).Click();
         }
