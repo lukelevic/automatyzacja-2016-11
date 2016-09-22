@@ -1,7 +1,11 @@
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.fail;
 
@@ -16,13 +20,6 @@ public class WpTest {
     private static String userPass = "QW12qw12";
     private static int timeInterval = 30;
 
-    @BeforeClass
-    public static void setUp() throws Exception {
-        insert(By.id("user_login"), userLogin);
-        insert(By.id("user_pass"), userPass);
-        click(By.id("wp-submit"));
-    }
-
     protected static void click(By by) {
         driver.findElement(by).click();
     }
@@ -32,13 +29,29 @@ public class WpTest {
         driver.findElement(by).sendKeys(text);
     }
 
-    protected static void findByClassName(String className) { driver.findElement(By.className(className)); };
+    protected static void closeAlertIfOpened() {
+        try {
+            Alert alert = driver.switchTo().alert();
+            alert.accept();
+        } finally {};
+    }
+
+    @BeforeClass
+    public static void setUp() throws Exception {
+        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(timeInterval, TimeUnit.SECONDS);
+        driver.get(baseUrl + "/wp-login.php?redirect_to=https%3A%2F%2Fautomatyzacja2016.wordpress.com%2Fwp-admin%2F&reauth=1");
+        insert(By.id("user_login"), userLogin);
+        insert(By.id("user_pass"), userPass);
+        click(By.id("wp-submit"));
+    }
 
     @AfterClass
     public static void tearDown() throws Exception {
-//      this is a nasty hack, debug required
-        Thread.sleep(3000);
         click(By.className("masterbar__item-me"));
+        closeAlertIfOpened();
         click(By.className("me-sidebar__signout-button"));
         driver.quit();
         String verificationErrorString = verificationErrors.toString();
