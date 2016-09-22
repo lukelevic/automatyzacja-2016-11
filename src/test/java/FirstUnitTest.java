@@ -40,7 +40,7 @@ public class FirstUnitTest {
     }
 
     @Test
-    @Parameters({"1,2,3","2,3,5","80,10,90","1,2,8"})
+    @Parameters({"1,2,3","2,3,5","80,10,90","1,7,8"})
     public void testSum(String A, String B, int C) {
         System.out.println("testThird");
         int _A = Integer.parseInt(A);
