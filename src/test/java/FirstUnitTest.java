@@ -9,7 +9,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 @RunWith(JUnitParamsRunner.class)
-public class FirstUnitTests {
+public class FirstUnitTest {
 
     private List<String> list = new LinkedList<String>();
 
