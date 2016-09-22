@@ -1,5 +1,5 @@
 /**
- * Created by Administrator on 2016-09-21.
+ * Created by MichalJanuszS 2016-09-21.
  */
 import org.junit.*;
 import junitparams.*;
@@ -16,5 +16,4 @@ public class Dodawanie {
         Integer tmp = int_p1 + int_p2;
         Assert.assertEquals(tmp, p3);
     }
-
 }
