@@ -32,7 +32,7 @@ public class wordpressTest {
         driver.findElement(By.id("user_pass")).sendKeys("QW12qw12");
         driver.findElement(By.id("wp-submit")).click();
         driver.findElement(By.cssSelector("img.avatar.avatar-32")).click();
-        driver.findElement(By.cssSelector("button.ab-sign-out")).click();
+        driver.findElement(By.xpath("//button[contains(@class, 'sign-out')]")).click();
     }
 
     @After
