@@ -4,3 +4,5 @@ C:\repozytorium\automatyzacja-2016-11\UnitTestProject1\bin\Debug\Microsoft.Visua
 C:\repozytorium\automatyzacja-2016-11\UnitTestProject1\obj\Debug\UnitTestProject1.csprojResolveAssemblyReference.cache
 C:\repozytorium\automatyzacja-2016-11\UnitTestProject1\obj\Debug\UnitTestProject1.dll
 C:\repozytorium\automatyzacja-2016-11\UnitTestProject1\obj\Debug\UnitTestProject1.pdb
+C:\repozytorium\automatyzacja-2016-11\UnitTestProject1\bin\Debug\nunit.framework.dll
+C:\repozytorium\automatyzacja-2016-11\UnitTestProject1\bin\Debug\nunit.framework.xml

@@ -1,6 +1,0 @@
-C:\repozytorium\automatyzacja-2016-11\UnitTests\obj\Debug\UnitTests.csprojResolveAssemblyReference.cache
-C:\repozytorium\automatyzacja-2016-11\UnitTests\bin\Debug\UnitTests.dll
-C:\repozytorium\automatyzacja-2016-11\UnitTests\bin\Debug\UnitTests.pdb
-C:\repozytorium\automatyzacja-2016-11\UnitTests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
-C:\repozytorium\automatyzacja-2016-11\UnitTests\obj\Debug\UnitTests.dll
-C:\repozytorium\automatyzacja-2016-11\UnitTests\obj\Debug\UnitTests.pdb

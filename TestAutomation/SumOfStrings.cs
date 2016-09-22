@@ -17,7 +17,6 @@ namespace TestAutomation
             [Values("2", "3", "7")] string secondString,
             [Values(3, 5, 10)] int result)
         {
-
             int convertedFirstNumber = int.Parse(firstString);
             int convertedSecondString = int.Parse(secondString);
             int sum = convertedFirstNumber + convertedSecondString;
