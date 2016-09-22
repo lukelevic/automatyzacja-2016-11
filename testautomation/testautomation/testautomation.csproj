@@ -55,7 +55,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Scenario.cs" />
     <Compile Include="SeleniumTest.cs" />
     <Compile Include="logowanie.cs" />
     <Compile Include="SecondUnitTest.cs" />
