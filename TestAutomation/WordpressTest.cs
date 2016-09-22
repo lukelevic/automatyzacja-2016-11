@@ -10,7 +10,7 @@ using OpenQA.Selenium.Support.UI;
 namespace TestAutomation
 {
     [TestFixture]
-    public class WpAdminLogin
+    public class WordpressTest
     {
         private IWebDriver driver;
         private StringBuilder verificationErrors;
@@ -42,7 +42,7 @@ namespace TestAutomation
         }
 
         [Test]
-        public void TheIdeExportTest()
+        public void shouldAddNewPost()
         {
             // login
             driver.Navigate().GoToUrl(baseURL + "/wp-login.php");
@@ -61,7 +61,9 @@ namespace TestAutomation
             driver.FindElement(By.Id("title")).SendKeys(entryTitle);
             //driver.FindElement(By.Id("content-html")).Click();
             driver.FindElement(By.Id("content")).SendKeys(entryContent);
-            Thread.Sleep(1000);
+            //Thread.Sleep(1000);
+            WebDriverWait wait = new WebDriverWait(driver, new TimeSpan(0, 0, 5));
+            IWebElement permLink = wait.Until(d => d.FindElement(By.XPath("//*[@id='sample-permalink']/a")));
             driver.FindElement(By.Id("publish")).Click();
             String entryPermalink = driver.FindElement(By.XPath("//*[@id='sample-permalink']/a")).Text;
             // logout
