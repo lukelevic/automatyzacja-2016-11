@@ -11,7 +11,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 
-public class SeleniumJunitTest {
+public class SeleniumJunitTest_not_now {
   private WebDriver driver;
   private String baseUrl;
   private boolean acceptNextAlert = true;
