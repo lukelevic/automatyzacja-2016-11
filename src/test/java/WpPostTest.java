@@ -22,6 +22,6 @@ public class WpPostTest extends WpTest {
         click(By.className("editor-ground-control__publish-button"));
 
         // then
-        Assert.assertTrue(driver.findElement(By.className("notice__content")).isDisplayed());
+        assertThatPostIsAdded();
     }
 }

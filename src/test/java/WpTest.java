@@ -1,4 +1,5 @@
 import org.junit.AfterClass;
+import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
@@ -34,6 +35,10 @@ public class WpTest {
             Alert alert = driver.switchTo().alert();
             alert.accept();
         } finally {};
+    }
+
+    protected static void assertThatPostIsAdded() {
+        Assert.assertTrue(driver.findElement(By.className("notice__content")).isDisplayed());
     }
 
     @BeforeClass
