@@ -28,15 +28,20 @@ public class SeleniumAddPostAndCheckTest {
 
     @Test
     public void testSeleniumJunit() throws Exception {
+        // given
         //Logowanie
         driver.get(baseUrl + "/");
         driver.get(baseUrl + "/wp-login.php");
+
+        //when
         driver.findElement(By.id("user_login")).clear();
         driver.findElement(By.id("user_login")).sendKeys("szkolenieautomatyzacja");
         driver.findElement(By.id("user_pass")).clear();
         driver.findElement(By.id("user_pass")).sendKeys("QW12qw12");
         driver.findElement(By.id("wp-submit")).click();
         driver.manage().window().maximize();
+
+        // then
         //Zalogowany
 
         //Wpisy
