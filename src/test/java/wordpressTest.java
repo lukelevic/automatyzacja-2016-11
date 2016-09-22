@@ -71,9 +71,13 @@ public class wordpressTest {
 
         driver.findElement(By.xpath("//img[@class='gravatar']")).click();
 
-        wait.until(ExpectedConditions.alertIsPresent());
-        Alert alert = driver.switchTo().alert();
-        alert.accept();
+        try {
+            wait.until(ExpectedConditions.alertIsPresent());
+            Alert alert = driver.switchTo().alert();
+            alert.accept();
+        }
+        catch (NoSuchElementException e) {  }
+
 
         driver.findElement(By.xpath("//button[@class='button me-sidebar__signout-button is-compact']")).click();
         Thread.sleep(2000);
