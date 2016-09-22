@@ -18,6 +18,20 @@ public class wordpressTest {
     private boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new StringBuffer();
 
+    public static final String loginFieldSelector = "user_login";
+    public static final String PasswordFieldSelector = "user_pass";
+    public static final String LoginSubmitButton = "wp-submit";
+
+    public static final String PostTitleSelector = "//textarea[@class='textarea-autosize editor-title__input']";
+    public static final String PostTextSelector = "//textarea[@id='tinymce-1']";
+    public static final String NewPostSelector = "//li[@id='wp-admin-bar-ab-new-post']";
+    public static final String NewPostPublishSelector = "//button[@class='editor-ground-control__publish-button button is-primary']";
+    public static final String NoticeSelector = "//div[@class='notice__content']";
+
+    public static final String AvatarSelector = "//img[@class='gravatar']";
+    public static final String LogoutSelector = "//button[@class='button me-sidebar__signout-button is-compact']";
+    public static final String MainContent = "//div[@id='content']";
+
     @Before
     public void setUp() throws Exception {
         // driver = new FirefoxDriver();
@@ -29,47 +43,70 @@ public class wordpressTest {
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
 
-
-
     @Test
     public void testWordpress() throws Exception {
         driver.get(baseUrl + "/wp-login.php");
-        driver.findElement(By.id("user_login")).clear();
-        driver.findElement(By.id("user_login")).sendKeys("szkolenieautomatyzacja");
-        driver.findElement(By.id("user_pass")).clear();
-        driver.findElement(By.id("user_pass")).sendKeys("QW12qw12");
-        driver.findElement(By.id("wp-submit")).click();
+        driver.findElement(By.id(loginFieldSelector)).clear();
+        driver.findElement(By.id(loginFieldSelector)).sendKeys("szkolenieautomatyzacja");
+        driver.findElement(By.id(PasswordFieldSelector)).clear();
+        driver.findElement(By.id(PasswordFieldSelector)).sendKeys("QW12qw12");
+        driver.findElement(By.id(LoginSubmitButton)).click();
 
         // driver.findElement(By.cssSelector("img.avatar.avatar-32")).click();
         // driver.findElement(By.xpath("//button[contains(@class, 'sign-out')]")).click();
     }
 
+    public void openURL(String url)
+    {
+        driver.get(baseUrl + url);
+    }
+
+    public WebElement findElement(String type, String selector)
+    {
+        if ( type == "id" ) {
+            return driver.findElement(By.id(selector));
+        }
+        else if ( type == "xpath" ) {
+            return driver.findElement(By.xpath(selector));
+        }
+        else return null;
+    }
+
+    public void login(String login, String Password)
+    {
+        openURL("/wp-login.php");
+        findElement("id", loginFieldSelector).clear();
+        findElement("id", loginFieldSelector).sendKeys(login);
+        findElement("id", PasswordFieldSelector).clear();
+        findElement("id", PasswordFieldSelector).sendKeys(Password);
+        findElement("id", LoginSubmitButton).click();
+    }
+
+    public void logout()
+    {
+        findElement("xpath", LogoutSelector).click();
+    }
+
     @Test
-    public void testAddPost() throws Exception {
+    public void testShouldAddPost() throws Exception {
 
         Random generator = new Random();
         int a = generator.nextInt(50000);
 
         String expectedPostString = "Post testowy z selenium: " + a;
+        String expectedTitleString = "Tytuł testowy z selenium";
 
-        driver.get(baseUrl + "/wp-login.php");
-        driver.findElement(By.id("user_login")).clear();
-        driver.findElement(By.id("user_login")).sendKeys("szkolenieautomatyzacja");
-        driver.findElement(By.id("user_pass")).clear();
-        driver.findElement(By.id("user_pass")).sendKeys("QW12qw12");
-        driver.findElement(By.id("wp-submit")).click();
+        login ("szkolenieautomatyzacja", "QW12qw12");
 
-        driver.findElement(By.xpath("//li[@id='wp-admin-bar-ab-new-post']")).click();
-
-        driver.findElement(By.xpath("//textarea[@class='textarea-autosize editor-title__input']")).sendKeys("Tytuł testowy z selenium");
-        driver.findElement(By.xpath("//textarea[@id='tinymce-1']")).sendKeys(expectedPostString);
-
-        driver.findElement(By.xpath("//button[@class='editor-ground-control__publish-button button is-primary']")).click();
+        findElement("xpath", NewPostSelector).click();
+        findElement("xpath", PostTitleSelector).sendKeys(expectedTitleString);
+        findElement("xpath", PostTextSelector).sendKeys(expectedPostString);
+        findElement("xpath", NewPostPublishSelector).click();
 
         WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='notice__content']")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(NoticeSelector)));
 
-        driver.findElement(By.xpath("//img[@class='gravatar']")).click();
+        findElement("xpath", AvatarSelector).click();
 
         try {
             wait.until(ExpectedConditions.alertIsPresent());
@@ -78,11 +115,9 @@ public class wordpressTest {
         }
         catch (NoSuchElementException e) {  }
 
-        driver.findElement(By.xpath("//button[@class='button me-sidebar__signout-button is-compact']")).click();
-
-        driver.get(baseUrl);
-
-        String content =  driver.findElement(By.xpath("//div[@id='content']")).getText();
+        logout();
+        openURL("");
+        String content =  findElement("xpath", MainContent).getText();
         Assert.assertTrue(content.contains(expectedPostString));
 
     }
