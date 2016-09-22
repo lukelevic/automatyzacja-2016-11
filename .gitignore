@@ -1,6 +1,8 @@
 /target/
 /.apt_generated/
 /bin/
+/packages/
+/.vs/
 .sass-cache/
 
 # npm
