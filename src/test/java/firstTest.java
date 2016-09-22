@@ -56,7 +56,7 @@ public class firstTest{
     }
 
     @Test
-    @Parameters({"1,2,3"})
+    @Parameters({"1,2,3","2,2,4"})
     public void paramsInAnnotation(String a1, String b1, String s1) {
 
 
