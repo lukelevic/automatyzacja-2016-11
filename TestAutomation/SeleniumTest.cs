@@ -51,8 +51,26 @@ namespace SeleniumTests
             driver.FindElement(By.Id("user_pass")).Clear();
             driver.FindElement(By.Id("user_pass")).SendKeys("QW12qw12");
             driver.FindElement(By.Id("wp-submit")).Click();
+            Thread.Sleep(3000);
+            driver.FindElement(By.XPath("//div[@class='wp-menu-image dashicons-before dashicons-admin-post']")).Click();
+            Thread.Sleep(3000);
+            driver.FindElement(By.XPath("//a[@class='page-title-action']")).Click();
+            Thread.Sleep(3000);
+            driver.FindElement(By.XPath("//input[@id='title']")).SendKeys("nowy_wpis-ms");
+            Thread.Sleep(3000);
+            //driver.FindElement(By.ClassName("wp-editor-area")).SendKeys("tekst do wpisu");
+            //Thread.Sleep(3000);
+            driver.FindElement(By.XPath("//input[@id='publish']")).Click();
+            Thread.Sleep(3000);
+            driver.FindElement(By.XPath("//a[contains(.,'https://automatyzacja2016.wordpress.com/2016/09/22/nowy_wpis-ms')]")).Click();
+            //driver.FindElement(By.Name("nowy wpis-ms")).Click();
+            Assert.True(driver.PageSource.Contains("nowy_wpis-ms"));
+            Thread.Sleep(300);
             driver.FindElement(By.CssSelector("img.avatar.avatar-32")).Click();
+            Thread.Sleep(3000);
             driver.FindElement(By.CssSelector("button.ab-sign-out")).Click();
+            
+            
         }
         private bool IsElementPresent(By by)
         {
