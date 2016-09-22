@@ -20,7 +20,7 @@ public class BaseTest {
     protected StringBuffer verificationErrors = new StringBuffer();
 
     @Before
-    protected void setUp() throws Exception {
+    public void setUp() throws Exception {
 //        driver = new ChromeDriver(@"C:\Workspace\automatyzacja-2016-11\src\main\resources");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -29,7 +29,7 @@ public class BaseTest {
     }
 
     @After
-    protected void tearDown() throws Exception {
+    public void tearDown() throws Exception {
         driver.quit();
         String verificationErrorString = verificationErrors.toString();
         if (!"".equals(verificationErrorString)) {
