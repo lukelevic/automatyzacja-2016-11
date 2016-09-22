@@ -43,20 +43,13 @@ public class SeleniumTest {
         driver.findElement(By.id("wp-submit")).click();
 
         driver.findElement(By.xpath(".//*[@id='wp-admin-bar-ab-new-post']/a")).click();
-        Thread.sleep(5000);
-
+            Thread.sleep(3000);
         driver.findElement(By.xpath(".//*[@id='primary']/div/div[2]/div[1]/div[2]/div[3]/div/textarea")).sendKeys("jakubg");
-       //driver.findElement(By.cssSelector(".editor__header")).sendKeys("jakubg");
-        Thread.sleep(3000);
+            Thread.sleep(3000);
         driver.findElement(By.xpath(" .//*[@id='primary']/div/div[2]/div[2]/div[2]/div[1]/div[3]/div/button[1]")).click();
-        Thread.sleep(1000);
+            Thread.sleep(1000);
         driver.findElement(By.xpath(".//*[@id='primary']/div/div[2]/div[1]/div[2]/div[2]/div/div/a")).click();
-
-       // WebElement element = driver.findElement(By.className("entry-title"));
-      //  WebElement element = driver.findElement(By.xpath(".//*[@id='post-345']/header/h1"));
-        //String strng = element.getText();
-       // System.out.println(strng);
-        Thread.sleep(5000);
+            Thread.sleep(3000);
         Assert.assertTrue("jakubg", driver.getPageSource().contains("jakubg"));
         System.out.println("Jest git!!!!!!!!!!!!!!!!!");
 
