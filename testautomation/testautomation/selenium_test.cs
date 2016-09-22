@@ -23,8 +23,11 @@ namespace SeleniumTests
         {
             //driver = new FirefoxDriver();
             driver = new ChromeDriver();
+            driver.Manage().Window.Maximize();
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(30));
             baseURL = "https://automatyzacja2016.wordpress.com/";
             verificationErrors = new StringBuilder();
+           
         }
 
         [TearDown]
@@ -44,14 +47,31 @@ namespace SeleniumTests
         [Test]
         public void TheSeleniumTest()
         {
+
             driver.Navigate().GoToUrl(baseURL + "/wp-login.php?redirect_to=https%3A%2F%2Fautomatyzacja2016.wordpress.com%2Fwp-admin%2F&reauth=1");
             driver.FindElement(By.Id("user_login")).Clear();
             driver.FindElement(By.Id("user_login")).SendKeys("szkolenieautomatyzacja");
             driver.FindElement(By.Id("user_pass")).Clear();
             driver.FindElement(By.Id("user_pass")).SendKeys("QW12qw12");
             driver.FindElement(By.Id("wp-submit")).Click();
-            driver.FindElement(By.CssSelector("img.avatar.avatar-32")).Click();
-            driver.FindElement(By.CssSelector("button.ab-sign-out")).Click();
+
+            driver.FindElement(By.Id("wp-admin-bar-ab-new-post")).Click();
+            driver.FindElement(By.ClassName("editor-title__input")).SendKeys("test");
+
+
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            wait.Until(ExpectedConditions.ElementToBeClickable(
+                By.ClassName("editor-ground-control__publish-button")));
+            driver.FindElement(By.ClassName("editor-ground-control__publish-button")).Click();
+            Thread.Sleep(2000);
+
+            wait.Until(d => d.FindElement(By.ClassName("masterbar__item-me"))).Click();
+            wait.Until(d => d.FindElement(By.ClassName("me-sidebar__signout-button"))).Click();
+            // driver.FindElement(By.ClassName("avatar-32")).Click();
+            // driver.FindElement(By.ClassName("me-sidebar__signout-button")).Click();
+            driver.Navigate().GoToUrl(baseURL);
+            Assert.NotNull(wait.Until<IWebElement>(d=>d.FindElement(By.LinkText("test")))); 
+
         }
         private bool IsElementPresent(By by)
         {
