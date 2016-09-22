@@ -49,7 +49,7 @@ public class SeleniumAddPostAndCheckTest {
         java.util.Date now = calendar.getTime();
         java.sql.Timestamp currentTimestamp = new java.sql.Timestamp(now.getTime());
         String napis_tytul = "Lorem Ipsum MichalJanuszS_";
-        String currentTimestamp_string = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss").format(currentTimestamp);
+        String currentTimestamp_string = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(currentTimestamp);
         String tytul = napis_tytul + currentTimestamp_string;
 
         driver.findElement(By.xpath("//*[@id=\"title\"]")).sendKeys(tytul);
