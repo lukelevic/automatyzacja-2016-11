@@ -40,8 +40,9 @@ public class WpAddNewPostTest {
 
     @AfterClass
     public static void tearDown() throws Exception {
-        driver.findElement(By.className("masterbar__item-me")).click();
-        driver.findElement(By.className("me-sidebar__signout-button")).click();
+//        this calls alert window
+//        driver.findElement(By.className("masterbar__item-me")).click();
+//        driver.findElement(By.className("me-sidebar__signout-button")).click();
         driver.quit();
         String verificationErrorString = verificationErrors.toString();
         if (!"".equals(verificationErrorString)) {
@@ -62,5 +63,8 @@ public class WpAddNewPostTest {
 //        wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("notice__content")));
 
         Assert.assertTrue(driver.findElement(By.className("notice__content")).isDisplayed());
+//        this works
+//        driver.findElement(By.className("masterbar__item-me")).click();
+//        driver.findElement(By.className("me-sidebar__signout-button")).click();
     }
 }
