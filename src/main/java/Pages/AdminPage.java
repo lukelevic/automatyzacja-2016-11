@@ -16,6 +16,8 @@ public class AdminPage extends WpPage {
     public static final String NoticeSelector = "//div[@class='notice__content']";
 
     public static final String AvatarSelector = "//img[@class='gravatar']";
+    public static final String AvatarSelector2 = "//img[contains(@class, 'avatar')]";
+
     public static final String LogoutSelector = "//button[@class='button me-sidebar__signout-button is-compact']";
 
     public AdminPage(WebDriver driver) {
@@ -35,8 +37,14 @@ public class AdminPage extends WpPage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(NoticeSelector)));
     }
 
+    public boolean isLogged()
+    {
+        if ( ( findElement("xpath", AvatarSelector2) != null )) return true;
+        else return false;
+    }
+
     public void logOut() {
-        findElement("xpath", AvatarSelector).click();
+        findElement("xpath", AvatarSelector2).click();
 
         WebDriverWait wait = new WebDriverWait(driver, 10);
 

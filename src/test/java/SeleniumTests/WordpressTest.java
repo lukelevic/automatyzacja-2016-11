@@ -22,6 +22,16 @@ import static org.junit.Assert.fail;
 public class WordpressTest extends Scenario {
 
     @Test
+    public void testUserShouldLogin() throws Exception
+    {
+        LoginPage lp = new LoginPage(driver);
+        lp.open();
+        AdminPage ap = lp.login();
+
+        Assert.assertTrue(ap.isLogged());
+    }
+
+    @Test
     public void testShouldAddPostPOP() throws Exception {
 
         String testString;
