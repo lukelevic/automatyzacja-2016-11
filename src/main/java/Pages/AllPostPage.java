@@ -15,7 +15,7 @@ public class AllPostPage extends Page{
 
 
     public void searchPost(String title) {
-        clickElement(".//*[@id='menu-posts']/a/div[3]");
+        driver.findElement(By.xpath(".//*[@id='menu-posts']/a/div[3]")).click();
         driver.findElement(By.xpath("//*[@id='post-search-input']")).sendKeys(title);
         driver.findElement(By.id("search-submit")).click();
         System.out.println(title);
@@ -24,8 +24,8 @@ public class AllPostPage extends Page{
     }
 
     public void openPostPage() {
-        clickElement(".//*[@id='menu-posts']/a/div[3]");
-        clickElement(".//*[@id='menu-posts']/ul/li[3]/a");
+        driver.findElement(By.xpath(".//*[@id='menu-posts']/a/div[3]")).click();
+        driver.findElement(By.xpath(".//*[@id='menu-posts']/ul/li[3]/a")).click();
 
     }
 }

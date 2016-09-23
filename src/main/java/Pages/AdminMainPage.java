@@ -19,8 +19,8 @@ public class AdminMainPage extends Page {
 
     public NewPostPage goTOAddPost() {
 
-        clickElement(".//*[@id='menu-posts']/a/div[3]");
-        clickElement(".//*[@id='menu-posts']/ul/li[3]/a");
+        driver.findElement(By.xpath(".//*[@id='menu-posts']/a/div[3]")).click();
+        driver.findElement(By.xpath(".//*[@id='menu-posts']/ul/li[3]/a")).click();
 
         return new NewPostPage(driver);
     }

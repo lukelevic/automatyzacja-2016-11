@@ -20,9 +20,10 @@ private String submit = "search-submit";
     }
 
     public void addPosts(String title) {
+        driver.findElement(By.id("title")).clear();
         driver.findElement(By.id("title")).sendKeys(title);
 
-        driver.findElement(By.id("content-html")).click();
+       driver.findElement(By.id("content")).clear();
         driver.findElement(By.id("content")).sendKeys(title +" " +title);
         //driver.findElement(By.xpath(".//*[@id='publish']")).click();
 

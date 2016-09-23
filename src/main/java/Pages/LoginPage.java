@@ -23,9 +23,9 @@ public class LoginPage extends Page{
     }
 
     public AdminMainPage signLogin(String user, String password) {
-        clearElement(".//*[@id='user_login']");
+        driver.findElement(By.xpath(".//*[@id='user_login']")).click();
        driver.findElement(By.xpath(".//*[@id='user_login']")).sendKeys(user);
-        clearElement(".//*[@id='user_pass']");
+        driver.findElement(By.xpath(".//*[@id='user_pass']")).click();
         driver.findElement(By.xpath(".//*[@id='user_pass']")).sendKeys(password);
         driver.findElement(By.id("wp-submit")).click();
 

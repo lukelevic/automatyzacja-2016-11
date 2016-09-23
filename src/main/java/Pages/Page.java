@@ -19,13 +19,13 @@ public class Page {
 
         this.driver = driver;}
 
-    public void clearElement(String path) {
-        driver.findElement(By.xpath(path)).clear();
-    }
+   // public void clearElement(String path) {
+    //    driver.findElement(By.xpath(path)).clear();
+   // }
 
-    public void clickElement(String pathh) {
-        driver.findElement(By.xpath(pathh)).click();
-    }
+  //  public void clickElement(String pathh) {
+   //     driver.findElement(By.xpath(pathh)).click();
+  //  }
 
    /* @Before
     public void setUp() throws Exception {
