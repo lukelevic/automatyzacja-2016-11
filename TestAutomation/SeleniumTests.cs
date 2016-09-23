@@ -39,7 +39,7 @@ namespace SeleniumTests
             addPost(title, content);
 
             click(By.ClassName("view-all"));
-            Assert.AreEqual(true, driver.PageSource.Contains(title));                        
+            Assert.AreEqual(true, checkIfPageContains(title));                        
         }
     }
 }

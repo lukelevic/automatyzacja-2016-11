@@ -11,8 +11,8 @@ namespace TestAutomation
 {
     public class Scenario
     {
-        protected IWebDriver driver;
-
+        private IWebDriver driver;
+        
         protected void addPost(string title, string content)
         {
             driver.FindElement(By.Id("title")).SendKeys(title);
@@ -37,8 +37,7 @@ namespace TestAutomation
         protected void LogOut()
         {
             click(By.ClassName("avatar avatar-32"));
-            click(By.ClassName("ab-sign-out"));
-           
+            click(By.ClassName("ab-sign-out"));           
         }
 
         protected void openPage(string url)
@@ -67,9 +66,20 @@ namespace TestAutomation
         }
 
         [TearDown]
-        public void TeardownTest()
+        protected void TeardownTest()
         {
             driver.Close();
+        }
+
+        protected void wait()
+        {
+
+        }
+
+        protected bool checkIfPageContains(string text)
+        {
+            if (driver.PageSource.Contains(text)) return true;
+            else return false;
         }
     }
 }
