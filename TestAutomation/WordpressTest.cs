@@ -43,7 +43,7 @@ namespace TestAutomation
         }
         private string getPermalink()
         {
-            return driver.FindElement(By.XPath("//*[@id='sample-permalink']/a")).Text;
+            return driver.FindElement(By.XPath("//*[@id='sample-permalink']/a")).GetAttribute("href");
         }
         private void verifyPostIsPublished(string entryTitle, string entryContent, string entryPermalink)
         {
