@@ -1,7 +1,6 @@
-﻿using System;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 
-namespace TestAutomation.tests
+namespace TestAutomation.pages
 {
     internal class PostPage : Page
     {

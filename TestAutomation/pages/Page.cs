@@ -1,13 +1,8 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace TestAutomation.tests
+namespace TestAutomation.pages
 {
     public class Page
     {
@@ -28,10 +23,23 @@ namespace TestAutomation.tests
             driver.FindElement(by).Clear();
             driver.FindElement(by).SendKeys(text);
         }
-        protected void waitForElementPresent(By by, int seconds)
+        protected void waitForElementClickable(By by, int seconds)
         {
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(seconds));
             wait.Until(ExpectedConditions.ElementToBeClickable(by));
+        }
+        protected bool isElementVisible(By by)
+        {
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(1));
+            try
+            {
+                wait.Until(ExpectedConditions.ElementIsVisible(by));
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
         }
         public string getPageURL()
         {

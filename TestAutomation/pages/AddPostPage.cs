@@ -1,7 +1,6 @@
-﻿using System;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 
-namespace TestAutomation.tests
+namespace TestAutomation.pages
 {
     internal class AddPostPage : Page
     {
@@ -17,7 +16,7 @@ namespace TestAutomation.tests
 
         internal EditPostPage publishPost()
         {
-            waitForElementPresent(By.XPath("//*[@id='sample-permalink']/a"), 5);
+            waitForElementClickable(By.XPath("//*[@id='sample-permalink']/a"), 5);
             click(By.Id("publish"));
             return new EditPostPage(driver);
         }

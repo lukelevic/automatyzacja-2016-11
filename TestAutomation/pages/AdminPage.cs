@@ -1,7 +1,6 @@
-﻿using System;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 
-namespace TestAutomation.tests
+namespace TestAutomation.pages
 {
     internal class AdminPage : Page
     {
@@ -14,6 +13,11 @@ namespace TestAutomation.tests
             click(By.XPath("//*[@id='menu-posts']/a/div[contains(text(),'Wpisy')]"));
             click(By.XPath("//li[@id='menu-posts']//a[contains(text(),'Dodaj nowy')]"));
             return new AddPostPage(driver);
+        }
+
+        internal bool isUserLoggedIn()
+        {
+            return isElementVisible(By.Id("wp-admin-bar-my-account"));
         }
     }
 }

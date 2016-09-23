@@ -38,7 +38,7 @@ namespace TestAutomation
         protected void setup()
         {
             driver = new ChromeDriver();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(15));
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.Manage().Window.Maximize();
             baseURL = "https://automatyzacja2016.wordpress.com";
             verificationErrors = new StringBuilder();
