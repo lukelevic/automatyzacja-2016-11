@@ -19,7 +19,7 @@ public class WpPostPage extends WpAdminPage {
         click(By.className("editor-ground-control__publish-button"));
     }
 
-    public void assertNewBlogPostIsAdded() {
+    public void assertNewBlogPostAlertIsDisplayed() {
         Assert.assertTrue(driver.findElement(By.className("notice__content")).isDisplayed());
     }
 

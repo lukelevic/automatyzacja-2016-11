@@ -37,7 +37,7 @@ public class AddBlogPostTest {
         postPage.addNewPostAndPublish(title, msg);
 
         // then
-        postPage.assertNewBlogPostIsAdded();
+        postPage.assertNewBlogPostAlertIsDisplayed();
         postPage.logOut();
     }
 }
