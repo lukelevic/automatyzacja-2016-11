@@ -67,7 +67,7 @@ namespace TestAutomation
         [SetUp]
         protected void setupTest()
         {
-            driver = new ChromeDriver(@"C:\repo\automatyzacja-2016-11\");
+            driver = new ChromeDriver(@"C:\repozytorium\automatyzacja-2016-11\");
             driver.Navigate().GoToUrl("https://automatyzacja2016.wordpress.com/wp-admin");
             driver.Manage().Window.Maximize();
             
