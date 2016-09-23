@@ -24,7 +24,7 @@ namespace SeleniumTests
          }
         private void AssertNewPostAdded()
          {
-            Click(By.XPath("//a[contains(.,'https://automatyzacja2016.wordpress.com/2016/09/22/nowy-tytul-ala')]"));
+            Click(By.XPath("//a[contains(.,'https://automatyzacja2016.wordpress.com/2016/09/23/nowy-tytul-ala')]"));
             LogOut();
             Assert.Pass("przeszlo");
          }
