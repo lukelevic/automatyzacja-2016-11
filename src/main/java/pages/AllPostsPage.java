@@ -41,6 +41,10 @@ public class AllPostsPage extends Page {
     public void removeTopPost() {
         getTopPostTitle();
         remove();
+        System.out.println("==========afterDeleteMsg.getText()============");
+        System.out.println(afterDeleteMsg.getText());
+        System.out.println("==========DELETE_MESSAGE============");
+        System.out.println(DELETE_MESSAGE);
         Assert.assertThat(afterDeleteMsg.getText(), CoreMatchers.containsString(DELETE_MESSAGE));
         Assert.assertNotEquals(postTitle, firstPostTitle.getText());
     }
