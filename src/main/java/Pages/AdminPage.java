@@ -1,9 +1,6 @@
 package Pages;
 
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -48,7 +45,7 @@ public class AdminPage extends WpPage {
             Alert alert = driver.switchTo().alert();
             alert.accept();
         }
-        catch (NoSuchElementException e) {  }
+        catch (NoAlertPresentException e) {  }
 
         findElement("xpath", LogoutSelector).click();
     }
