@@ -10,6 +10,7 @@ import java.util.concurrent.TimeUnit;
 import java.lang.*;
 import java.util.Random;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
 
@@ -23,6 +24,21 @@ public class wordpressTest extends baseClass {
         findElement("xpath", PostTitleSelector).sendKeys(title);
         findElement("xpath", PostTextSelector).sendKeys(body);
         findByXpathAndClick(NewPostPublishSelector);
+    }
+
+    @Test
+    public void testShouldLogin() throws Exception {
+        String login = "szkolenieautomatyzacja";
+        String password = "QW12qw12";
+
+        // given
+        openURL("");
+
+        // when
+        login(login, password);
+
+        // then
+        Assert.assertTrue(isLogged());
     }
 
     @Test

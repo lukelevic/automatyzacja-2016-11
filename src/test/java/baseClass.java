@@ -1,3 +1,4 @@
+import org.apache.commons.lang3.ObjectUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,7 +13,7 @@ import static org.junit.Assert.fail;
  * Created by Administrator on 2016-09-22.
  */
 public class baseClass {
-    public  WebDriver driver;
+    public WebDriver driver;
     public String baseUrl;
     public boolean acceptNextAlert = true;
     public StringBuffer verificationErrors = new StringBuffer();
@@ -91,6 +92,12 @@ public class baseClass {
         findElement("id", PasswordFieldSelector).clear();
         findElement("id", PasswordFieldSelector).sendKeys(Password);
         findByIdAndClick(LoginSubmitButton);
+    }
+
+    public boolean isLogged()
+    {
+        if ( findElement("id", "wpadminbar" ) != null ) return true;
+        else return false;
     }
 
     public void logout()
