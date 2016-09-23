@@ -20,20 +20,7 @@ namespace PageObjectPattern.tests
             return new MainPage(driver);
         }
 
-        internal bool searchForElement(By by)
-        {
-            bool present;
-            try
-            {
-                driver.FindElement(by);
-                present = true;
-            }
-            catch (NoSuchElementException e)
-            {
-                present = false;
-            }
-            return present;
-        }
+     
     }
 }
 

@@ -25,7 +25,7 @@ namespace PageObjectPattern.tests
         [TearDown]
         protected void TeardownTest()
         {
-           //driver.Close();
+           driver.Close();
         }
     }
 }

@@ -41,5 +41,20 @@ namespace PageObjectPattern.tests
             var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeout));
             wait.Until(ExpectedConditions.ElementExists(by));
         }
+
+        internal bool searchForElement(By by)
+        {
+            bool present;
+            try
+            {
+                driver.FindElement(by);
+                present = true;
+            }
+            catch (NoSuchElementException e)
+            {
+                present = false;
+            }
+            return present;
+        }
     }
 }

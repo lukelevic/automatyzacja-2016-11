@@ -37,17 +37,16 @@ namespace PageObjectPattern.tests
         [Test, Sequential]
         public void shouldNotLogInWithIncorrectCredentials(
             [Values("user1", "user2", "user3")] string userName,
-            [Values("password1", "password2", "password3")] string password,
-            [Values(false, false, false)] bool expectedResult)
+            [Values("password1", "password2", "password3")] string password)
         {
-
             LoginPage lp = new LoginPage(driver);
             lp.login(userName, password);
 
             Assert.AreEqual(true, lp.searchForElement(By.Id("login_error")));
         }
+
+
                 
-        
         //    bool result = checkIfLoggedIn();
         //    Assert.AreEqual(expectedResult, result);
         //}
