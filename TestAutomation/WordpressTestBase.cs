@@ -35,23 +35,38 @@ namespace TestAutomation
             }
             Assert.AreEqual("", verificationErrors.ToString());
         }
+        protected void setup()
+        {
+            driver = new ChromeDriver();
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(15));
+            driver.Manage().Window.Maximize();
+            baseURL = "https://automatyzacja2016.wordpress.com";
+            verificationErrors = new StringBuilder();
+        }
         protected void waitForElementPresent(By by, int seconds)
         {
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(seconds));
             wait.Until(ExpectedConditions.ElementToBeClickable(by));
         }
 
-        protected void login(String userName, String passWord)
+        protected void tryLogin(String userName, String passWord)
         {
             driver.Navigate().GoToUrl(baseURL + "/wp-login.php");
             writeText(By.Id("user_login"), userName);
             writeText(By.Id("user_pass"), passWord);
             click(By.Id("wp-submit"));
         }
-        protected void logout()
+        protected void tryLogout()
         {
-            click(By.CssSelector("img.avatar.avatar-32"));
-            click(By.CssSelector("button.ab-sign-out"));
+            try
+            {
+                driver.FindElement(By.CssSelector("img.avatar.avatar-32")).Click();
+                driver.FindElement(By.CssSelector("button.ab-sign-out")).Click();
+            }
+            catch (Exception)
+            {
+                // ignore logout error
+            }
         }
         protected void click(By by)
         {
@@ -62,14 +77,13 @@ namespace TestAutomation
             driver.FindElement(by).Clear();
             driver.FindElement(by).SendKeys(text);
         }
-
-        protected void setup()
+        protected void assertTextInElement(string expectedText, By by)
         {
-            driver = new ChromeDriver();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(15));
-            driver.Manage().Window.Maximize();
-            baseURL = "https://automatyzacja2016.wordpress.com/";
-            verificationErrors = new StringBuilder();
+            Assert.AreEqual(expectedText, driver.FindElement(by).Text);
+        }
+        protected bool checkUrlIsCorrect(string expectedPath)
+        {
+            return (baseURL + expectedPath).Equals(driver.Url, StringComparison.Ordinal);
         }
     }
 }

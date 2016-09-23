@@ -18,11 +18,11 @@ namespace TestAutomation
             // given
             string entryTitle, entryContent;
             generatePostData(out entryTitle, out entryContent);
-            login("szkolenieautomatyzacja", "QW12qw12");
+            tryLogin("szkolenieautomatyzacja", "QW12qw12");
             // when
             publishPost(entryTitle, entryContent);
             string entryPermalink = getPermalink();
-            logout();
+            tryLogout();
             // then
             verifyPostIsPublished(entryTitle, entryContent, entryPermalink);
         }
@@ -32,7 +32,7 @@ namespace TestAutomation
             entryTitle = "Post Rafala M @" + TimeStamp;
             entryContent = "Dowolny tekst w poście " + TimeStamp;
         }
-        protected void publishPost(string entryTitle, string entryContent)
+        private void publishPost(string entryTitle, string entryContent)
         {
             click(By.XPath("//*[@id='menu-posts']/a/div[contains(text(),'Wpisy')]"));
             click(By.XPath("//li[@id='menu-posts']//a[contains(text(),'Dodaj nowy')]"));
@@ -41,15 +41,28 @@ namespace TestAutomation
             waitForElementPresent(By.XPath("//*[@id='sample-permalink']/a"), 5);
             click(By.Id("publish"));
         }
-        protected string getPermalink()
+        private string getPermalink()
         {
             return driver.FindElement(By.XPath("//*[@id='sample-permalink']/a")).Text;
         }
-        protected void verifyPostIsPublished(string entryTitle, string entryContent, string entryPermalink)
+        private void verifyPostIsPublished(string entryTitle, string entryContent, string entryPermalink)
         {
             driver.Navigate().GoToUrl(entryPermalink);
-            Assert.AreEqual(entryTitle, driver.FindElement(By.ClassName("entry-title")).Text);
-            Assert.AreEqual(entryContent, driver.FindElement(By.XPath("//div[@class='entry-content']/p[1]")).Text);
+            assertTextInElement(entryTitle, By.ClassName("entry-title"));
+            assertTextInElement(entryContent, By.XPath("//div[@class='entry-content']/p[1]"));
+        }
+
+        [Test, Sequential]
+        public void shouldVerifyCredentials([Values("szkolenieautomatyzacja", "szkolenieautomatyzacja", "notexisting")] string usr, [Values("QW12qw12", "wrongpass", "dummypass")] string pwd, [Values(true, false, false)] bool loggedIn)
+        {
+            // given
+            string wpAdminPath = "/wp-admin/";
+            // when
+            tryLogin(usr, pwd);
+            // then
+            Assert.AreEqual(checkUrlIsCorrect(wpAdminPath), loggedIn);
+            // cleanup
+            tryLogout();
         }
     }
 }
