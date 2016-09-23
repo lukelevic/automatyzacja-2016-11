@@ -19,7 +19,6 @@ public class WpPage {
         this.driver = driver;
     }
 
-
     public void openURL(String s) {
         driver.get(baseUrl + s);
     }

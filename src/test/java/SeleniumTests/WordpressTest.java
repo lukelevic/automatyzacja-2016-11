@@ -20,7 +20,7 @@ import static org.junit.Assert.fail;
  * Created by Administrator on 2016-09-23.
  */
 public class WordpressTest {
-    
+
     private WebDriver driver;
     public StringBuffer verificationErrors = new StringBuffer();
 

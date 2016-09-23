@@ -25,7 +25,6 @@ public class AdminPage extends WpPage {
         super(driver);
     }
 
-
     public void addNewPost(String testString) {
 
         String titleString = "PD Tytuł testowy z selenium";
