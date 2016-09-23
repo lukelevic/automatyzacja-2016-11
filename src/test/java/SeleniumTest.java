@@ -9,21 +9,14 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class SeleniumTest extends Scenario {
 
 
-
-
-
-
     @Test
     public void ShouldLoginWithCredential() throws Exception {
         //given
         login();
 
-
         //when
         //TODO login(user,password)
     }
-
-
 
     @Test
     public void ShouldAddPost() throws Exception {
@@ -31,7 +24,6 @@ public class SeleniumTest extends Scenario {
         addNewPost();
         assertAddPost();
 
+
     }
-
-
 }
