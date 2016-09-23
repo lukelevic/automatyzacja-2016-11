@@ -8,11 +8,14 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Chrome;
+using testautomation.src.main;
 
 namespace testautomation.src.test
 {
-    class AddBlogPostTest
+    class AddBlogPostTest : Scenario
     {
+          
+
         [Test]
         public void ShouldLogIn()
         {
@@ -22,12 +25,15 @@ namespace testautomation.src.test
             AddPostPage addPost = adminPage.GoToAddPostPage();
             addPost.createPost("Title", "description");
             addPost.Publish();
-            addPostPage.LogOut();
-            BlogPage blogPage = new BlogPage(driver);
-            Assert.IsTrue(BP.contain("Title");
-                  
 
-            
+            BlogPage blogPage = new BlogPage(driver);
+            blogPage.contain("Title");
         }
-    }
-}
+
+
+
+        }
+
+
+       }
+
