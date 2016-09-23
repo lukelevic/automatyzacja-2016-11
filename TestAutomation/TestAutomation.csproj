@@ -51,15 +51,19 @@
       <HintPath>..\packages\Selenium.WebDriver.2.53.1\lib\net40\WebDriver.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="WebDriver.Support, Version=2.53.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Selenium.Support.2.53.1\lib\net40\WebDriver.Support.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="tests\NewScenario.cs" />
-    <Compile Include="Scenario.cs" />
-    <Compile Include="firstUnitTest.cs" />
+    <Compile Include="old classes\Scenario.cs" />
+    <Compile Include="old classes\firstUnitTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SeleniumTests.cs" />
-    <Compile Include="src\Page.cs" />
-    <Compile Include="SumOfStrings.cs" />
+    <Compile Include="old classes\SeleniumTests.cs" />
+    <Compile Include="src\StartPage.cs" />
+    <Compile Include="old classes\SumOfStrings.cs" />
     <Compile Include="src\LoginPage.cs" />
     <Compile Include="src\MainPage.cs" />
     <Compile Include="src\AllPostsPage.cs" />

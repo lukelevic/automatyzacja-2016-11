@@ -12,7 +12,8 @@ namespace PageObjectPattern.tests
     class NewScenario
     {
         protected IWebDriver driver;
-
+        
+        
         [SetUp]
         protected void setupTest()
         {
@@ -24,9 +25,7 @@ namespace PageObjectPattern.tests
         [TearDown]
         protected void TeardownTest()
         {
-            driver.Close();
+           //driver.Close();
         }
-
-
     }
 }

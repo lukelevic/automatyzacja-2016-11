@@ -4,7 +4,7 @@ using System;
 
 namespace PageObjectPattern.tests
 {
-    internal class MainPage : Page
+    internal class MainPage : StartPage
     {
         public MainPage(IWebDriver driver) : base(driver)
         {

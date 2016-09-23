@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,15 +9,16 @@ using TestAutomation;
 
 namespace PageObjectPattern.tests
 {
-    class Page
+    public class StartPage
     {
-        public Page(IWebDriver driver)
+        public StartPage(IWebDriver driver)
         {
             this.driver = driver;
         }
 
         public IWebDriver driver { get; private set; }
-        
+        public WebDriverWait wait { get; set; }
+           
         protected void click(By by)
         {
             driver.FindElement(by).Click();
@@ -34,6 +36,10 @@ namespace PageObjectPattern.tests
             driver.Manage().Window.Maximize();
         }
 
-
+        protected void waitForElement(IWebDriver driver, By by, int timeout)
+        {
+            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeout));
+            wait.Until(ExpectedConditions.ElementExists(by));
+        }
     }
 }

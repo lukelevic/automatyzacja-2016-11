@@ -19,3 +19,5 @@ C:\repo\automatyzacja-2016-11\TestAutomation\bin\Debug\WebDriver.xml
 C:\repo\automatyzacja-2016-11\TestAutomation\obj\Debug\TestAutomation.csprojResolveAssemblyReference.cache
 C:\repo\automatyzacja-2016-11\TestAutomation\obj\Debug\TestAutomation.dll
 C:\repo\automatyzacja-2016-11\TestAutomation\obj\Debug\TestAutomation.pdb
+C:\repozytorium\automatyzacja-2016-11\TestAutomation\bin\Debug\WebDriver.Support.dll
+C:\repozytorium\automatyzacja-2016-11\TestAutomation\bin\Debug\WebDriver.Support.xml

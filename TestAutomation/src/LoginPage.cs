@@ -3,7 +3,7 @@ using OpenQA.Selenium;
 
 namespace PageObjectPattern.tests
 {
-    internal class LoginPage : Page
+    internal class LoginPage : StartPage
     {
 
         public LoginPage(IWebDriver driver) : base(driver)
@@ -19,5 +19,22 @@ namespace PageObjectPattern.tests
 
             return new MainPage(driver);
         }
+
+        internal bool searchForElement(By by)
+        {
+            bool present;
+            try
+            {
+                driver.FindElement(by);
+                present = true;
+            }
+            catch (NoSuchElementException e)
+            {
+                present = false;
+            }
+            return present;
+        }
     }
 }
+
+

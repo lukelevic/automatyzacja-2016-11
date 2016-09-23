@@ -3,7 +3,7 @@ using OpenQA.Selenium;
 
 namespace PageObjectPattern.tests
 {
-    internal class AllPostsPage : Page
+    internal class AllPostsPage : StartPage
     {
         public AllPostsPage(IWebDriver driver) : base(driver)
         {
@@ -16,3 +16,4 @@ namespace PageObjectPattern.tests
         }
     }
 }
+

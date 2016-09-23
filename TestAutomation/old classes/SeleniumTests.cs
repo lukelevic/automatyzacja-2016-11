@@ -30,7 +30,7 @@ namespace SeleniumTests
         }
 
         [Test]
-        public void shouldAddNewPost()
+        public void shouldAddNewPostOld()
         {
             string title = "nowy post";
             string content = "blablabla";
