@@ -2,6 +2,7 @@
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
+using System;
 
 namespace testautomation.Tests
 {
@@ -20,7 +21,13 @@ namespace testautomation.Tests
             sendKeys(By.Id("user_login"), login);
             sendKeys(By.Id("user_pass"), pass);
             click(By.Id("wp-submit"));
+
+            if (IsElementVisible(By.Id("login_error"))){
+                return null;
+            }
             return new AdminPage(driver, wait);
         }
+
+
     }
 }

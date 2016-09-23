@@ -12,7 +12,6 @@ namespace testautomation.Tests
 
         public WordPressPage(IWebDriver driver, WebDriverWait wait) : base(driver, wait)
         {
-
             driver.Navigate().GoToUrl(URLMainPage);
         }
 

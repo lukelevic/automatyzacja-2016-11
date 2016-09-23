@@ -31,6 +31,47 @@ namespace testautomation.Tests
             Assert.IsTrue(wpp.SearchPost(finalString));
         }
 
+        
+        [Test, Sequential]
+        public void SholudFailLogginWithWrongCredentials([Values("XXX", "YYY")] string _login,
+            [Values("YYY", "XXX")] string _pass)
+        {
+            //GIVEN
+            LoginPage lp = new LoginPage(driver, wait);
+
+            //THEN
+            AdminPage ap = lp.Login(_login, _pass);
+
+            //WHEN
+            Assert.IsNull(ap);
+        }
+
+        [Test]
+        public void ShouldAddComment()
+        {
+            //GIVEN
+            WordPressPage wpp = new WordPressPage(driver, wait);
+
+            //THEN
+            IWebElement addComment = wpp.findElement(By.LinkText("Dodaj komentarz"));
+            
+            addComment.Click();
+
+            //WHEN
+            try
+            {
+                wpp.sendKeys(By.Id("comment"), "new comment AM");
+                driver.FindElement(By.Id("comment")).SendKeys(Keys.Tab + "a@a.pl");
+                driver.FindElement(By.Id("comment")).SendKeys(Keys.Tab + Keys.Tab + "AM sign");
+                Assert.IsTrue(true);
+            }
+            catch
+            {
+                Assert.IsTrue(false);
+            }
+
+        }
+
 
     }
 }

@@ -45,5 +45,32 @@ namespace testautomation.Tests
             wait.Until<IWebElement>(ExpectedConditions.ElementToBeClickable(by)).Click();
             wait.Until<IWebElement>(d => d.FindElement(by)).SendKeys(text);
         }
+        public bool IsElementVisible(By by)
+        {
+            try
+            {
+                wait.Until<IWebElement>(d => d.FindElement(by));
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public IWebElement findElement(By by)
+        {
+            IWebElement elem;
+
+            try
+            {
+                elem =  wait.Until<IWebElement>(d => d.FindElement(by));
+            }
+            catch
+            {
+                return null;
+            }
+            return elem;
+        }
     }
 }
