@@ -28,6 +28,12 @@ namespace PageObjectPattern.tests
             driver.FindElement(by).SendKeys(text);
         }
 
+        protected void openPage(string url)
+        {
+            driver.Navigate().GoToUrl(url);
+            driver.Manage().Window.Maximize();
+        }
+
 
     }
 }

@@ -8,7 +8,8 @@ using TestAutomation;
 
 namespace PageObjectPattern.tests
 {
-    class PageObjectPatternTest : Scenario
+    class PageObjectPatternTest : NewScenario
+
     {
 
         [Test]
