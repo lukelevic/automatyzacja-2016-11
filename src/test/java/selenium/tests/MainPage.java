@@ -14,4 +14,14 @@ public class MainPage extends Abstract {
     public void goToPostView(String title) {
         driver.findElement(By.xpath("//div[@id='content']//a[contains(text(),'"+title+"')]")).click();
     }
+
+    public PostPage goToPostView() {
+        driver.findElement(By.xpath("//div[@id='content']//a")).click();
+        return new PostPage(driver);
+    }
+
+    public MainPage goToMainPage() {
+        driver.get(baseUrl);
+        return new MainPage(driver);
+    }
 }

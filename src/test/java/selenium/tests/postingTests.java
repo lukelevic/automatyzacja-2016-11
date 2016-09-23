@@ -14,9 +14,10 @@ public class postingTests extends Scenario {
     private AllPostPage allPostPage;
     private LogOutPage logOutPage;
     private MainPage mainPage;
+    private PostPage postPage;
     int rand = getRandom();
 
-    @Test
+    @Test@Ignore
     public void shouldAddNewPostTest() {
         LoginPage loginPage = new LoginPage(driver);
         adminPage = loginPage.logIn();
@@ -27,6 +28,18 @@ public class postingTests extends Scenario {
         mainPage = logOutPage.goToMainPage();
         mainPage.goToPostView(title);
         assertTrue(driver.getTitle().contains(title+" "+rand));
+    }
+
+    @Test
+    public void shouldAddComment() {
+        MainPage mainPage = new MainPage(driver);
+        mainPage = mainPage.goToMainPage();
+        postPage = mainPage.goToPostView();
+        postPage.clickReply();
+        postPage.setComment();
+        postPage.setEmail();
+        postPage.setUserName();
+        postPage.buttonSendClick();
     }
 
 
