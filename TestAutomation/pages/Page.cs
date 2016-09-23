@@ -18,9 +18,13 @@ namespace TestAutomation.pages
         {
             driver.FindElement(by).Click();
         }
-        protected void writeText(By by, String text)
+        protected void clearAndWriteText(By by, String text)
         {
             driver.FindElement(by).Clear();
+            writeText(by, text);
+        }
+        protected void writeText(By by, String text)
+        {
             driver.FindElement(by).SendKeys(text);
         }
         protected void waitForElementClickable(By by, int seconds)

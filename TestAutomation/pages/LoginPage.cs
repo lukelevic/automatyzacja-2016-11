@@ -15,8 +15,8 @@ namespace TestAutomation.pages
 
         internal AdminPage logIn(string usr, string pwd)
         {
-            writeText(By.Id("user_login"), usr);
-            writeText(By.Id("user_pass"), pwd);
+            clearAndWriteText(By.Id("user_login"), usr);
+            clearAndWriteText(By.Id("user_pass"), pwd);
             click(By.Id("wp-submit"));
             return new AdminPage(driver);
         }

@@ -10,8 +10,8 @@ namespace TestAutomation.pages
 
         internal void addNewPost(string title, string content)
         {
-            writeText(By.Id("title"), title);
-            writeText(By.Id("content"), content);
+            clearAndWriteText(By.Id("title"), title);
+            clearAndWriteText(By.Id("content"), content);
         }
 
         internal EditPostPage publishPost()
