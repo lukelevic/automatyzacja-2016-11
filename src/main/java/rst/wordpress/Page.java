@@ -17,7 +17,7 @@ public class Page  {
     }
 
     protected void insertText(By where, String text) {
-        new WebDriverWait(driver,5).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(where));
+        //new WebDriverWait(driver,5).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(where));
         driver.findElement(where).clear();
         driver.findElement(where).sendKeys(text);
     }
