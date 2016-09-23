@@ -1,20 +1,30 @@
 package pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 
 public class AdminPage extends Page {
+
+    @FindBy(id = "title")
+    private WebElement titleInput;
+
+    @FindBy(id = "content")
+    private WebElement contentArea;
+
+    @FindBy(id = "publish")
+    private WebElement publishButton;
+
 
     public AdminPage(WebDriver driver) {
         super(driver);
     }
 
     public void publishPost(String title, String postContent) {
-
-        driver.findElement(By.id("title")).sendKeys(title);
-        driver.findElement(By.id("content")).sendKeys(postContent);
-        driver.findElement(By.id("publish")).click();
+        titleInput.sendKeys(title);
+        contentArea.sendKeys(postContent);
+        publishButton.click();
     }
 
     public void open() {

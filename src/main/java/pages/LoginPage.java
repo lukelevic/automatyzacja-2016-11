@@ -1,9 +1,19 @@
 package pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 public class LoginPage extends Page {
+    @FindBy(id="user_login")
+    private WebElement usernameInput;
+
+    @FindBy(id="user_pass")
+    private WebElement passwordInput;
+
+    @FindBy(id = "wp-submit")
+    private WebElement signInButton;
+
     private final static String USERNAME = "szkolenieautomatyzacja";
     private final static String PASSWORD = "QW12qw12";
 
@@ -16,9 +26,9 @@ public class LoginPage extends Page {
     }
 
     public AdminPage signIn() {
-        driver.findElement(By.id("user_login")).sendKeys(USERNAME);
-        driver.findElement(By.id("user_pass")).sendKeys(PASSWORD);
-        driver.findElement(By.id("wp-submit")).click();
+        usernameInput.sendKeys(USERNAME);
+        passwordInput.sendKeys(PASSWORD);
+        signInButton.click();
 
         return new AdminPage(driver);
     }
