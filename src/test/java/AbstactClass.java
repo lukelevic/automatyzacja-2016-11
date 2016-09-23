@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.fail;
 
-public class AbstactClass  {
+public class AbstactClass {
     public WebDriver driver;
     public String baseUrl;
     public boolean acceptNextAlert = true;
@@ -81,6 +81,4 @@ public class AbstactClass  {
         WebElement w8 = new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(By.xpath(path)));
         return w8;
     }
-
-
 }
