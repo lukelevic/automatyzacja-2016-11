@@ -1,8 +1,5 @@
 import org.junit.*;
-import pages.AdminPage;
-import pages.BlogPage;
-import pages.LoginPage;
-import pages.MainPage;
+import pages.*;
 
 
 public class SeleniumTest extends BaseTest {
@@ -13,13 +10,26 @@ public class SeleniumTest extends BaseTest {
     public void publishNewPost() {
         LoginPage lp = new LoginPage(driver);
         lp.open();
-        AdminPage ap = lp.signIn();
-        ap.open();
-        ap.publishPost(setRandomTitle(TITLE), POST_CONTENT);
+        lp.signIn();
+        AddNewPostPage addNewPostPage = new AddNewPostPage(driver);
+        addNewPostPage.open();
+        addNewPostPage.publishPost(setRandomTitle(TITLE), POST_CONTENT);
         MainPage mp = new MainPage(driver);
         mp.logOut();
         BlogPage bp = new BlogPage(driver);
         bp.open();
         bp.assertPostWithTitleIsPublished(newTitle);
     }
+
+    @Test
+    public void removeBlogPost() {
+        LoginPage lp = new LoginPage(driver);
+        lp.open();
+        lp.signIn();
+        AllPostsPage allPostsPage = new AllPostsPage(driver);
+        allPostsPage.open();
+        allPostsPage.showAllPublishedPosts();
+        allPostsPage.removeTopPost();
+    }
+
 }

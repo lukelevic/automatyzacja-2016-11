@@ -7,27 +7,12 @@ import org.openqa.selenium.support.FindBy;
 
 public class AdminPage extends Page {
 
-    @FindBy(id = "title")
-    private WebElement titleInput;
-
-    @FindBy(id = "content")
-    private WebElement contentArea;
-
-    @FindBy(id = "publish")
-    private WebElement publishButton;
-
 
     public AdminPage(WebDriver driver) {
         super(driver);
     }
 
-    public void publishPost(String title, String postContent) {
-        titleInput.sendKeys(title);
-        contentArea.sendKeys(postContent);
-        publishButton.click();
-    }
-
     public void open() {
-        driver.get(baseUrl + "wp-admin/post-new.php");
+        driver.get(baseUrl + "wp-admin");
     }
 }
