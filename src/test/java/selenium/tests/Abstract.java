@@ -22,6 +22,7 @@ public class Abstract {
 
     public Abstract(WebDriver driver) {
         this.driver = driver;
+
     }
 
 
