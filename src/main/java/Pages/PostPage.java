@@ -10,8 +10,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 /**
  * Created by Administrator on 2016-09-23.
  */
-public class PostaPage extends Page {
-    public PostaPage(WebDriver driver) {
+public class PostPage extends Page {
+    public PostPage(WebDriver driver) {
         super(driver);
 
     }

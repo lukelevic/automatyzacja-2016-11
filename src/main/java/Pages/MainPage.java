@@ -1,6 +1,5 @@
 package Pages;
 
-import Pages.Page;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -12,9 +11,9 @@ public class MainPage extends Page {
         super(driver);
     }
 
-    public PostaPage goToPostPage() {
+    public PostPage goToPostPage() {
         click(By.xpath(".//*[@id='wp-admin-bar-ab-new-post']/a"));
 
-        return new PostaPage(driver);
+        return new PostPage(driver);
     }
 }

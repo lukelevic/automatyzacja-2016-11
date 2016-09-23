@@ -38,12 +38,12 @@ public class PostaTest {
     }
 
     @Test
-    public void shouldBePosibleToAddNewPost() throws InterruptedException {
+    public void shouldBePossibleToAddNewPost() throws InterruptedException {
         LogInPage lp = new LogInPage(driver);
         lp.openPage();
         MainPage mp = lp.logIn();
 
-        PostaPage pp = mp.goToPostPage();
+        PostPage pp = mp.goToPostPage();
         String title = UUID.randomUUID().toString();
         pp.addNewPost(title);
 
