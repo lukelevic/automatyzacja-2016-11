@@ -60,10 +60,12 @@
     <Compile Include="SeleniumTest.cs" />
     <Compile Include="Test\AddPostPage.cs" />
     <Compile Include="Test\BlogPage.cs" />
+    <Compile Include="Test\EditPost.cs" />
     <Compile Include="Test\LoginPage.cs" />
     <Compile Include="Test\MainAdminPage.cs" />
     <Compile Include="Test\Page.cs" />
     <Compile Include="Test\Test.cs" />
+    <Compile Include="Test\TestScenario.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -10,19 +10,9 @@ using OpenQA.Selenium.Chrome;
 
 namespace TestAutomation.Test
 {
-    class TestPosting
+    class TestPosting : TestScenario
 
     {
-        private ChromeDriver driver;
-        private string baseURL;
-        private string title;
-
-        [SetUp]
-        public void SetupTest()
-        {
-            driver = new ChromeDriver(@"C:\Users\Administrator\Downloads\chromedriver_win32");
-            title = ("nowy_wpis-ms");
-        }
 
         [Test]
         public void AddPost()
@@ -36,6 +26,32 @@ namespace TestAutomation.Test
 
             BlogPage bp = ap.gotoBlogPage();
             bp.assertPostAdded(title);
+
+
+        }
+         public void EditPost()
+        {
+            LoginPage lp = new LoginPage(driver);
+            lp.Open();
+            MainAdminPage mp = lp.LogIn();
+
+            AddPostPage ap = mp.goToAddNewPostPage();
+            mp.AddNewPost(title);
+            EditPost ep = ap.gotoEditPage();
+            ep.assertEditPost();
+
+
+        }
+
+        [TearDown]
+        public void TeardownTest()
+        {
+            try
+            {
+                driver.Quit();
+            }
+            catch (Exception) { }
+            
         }
     }
 }

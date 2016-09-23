@@ -21,5 +21,13 @@ namespace TestAutomation.Test
             Click(By.XPath("//div[@class='wp-menu-image dashicons-before dashicons-admin-post']"));
             return new BlogPage(driver);
         }
+
+        internal EditPost gotoEditPage()
+        {
+            Click(By.XPath("//div[@class='wp-menu-image dashicons-before dashicons-admin-post']"));
+            Click(By.XPath("//a[@aria-label='“nowy_wpis-ms” (Edit)']"));
+            return new EditPost(driver);
+
+        }
     }
 }
