@@ -67,13 +67,28 @@ public class AddBlogPostTest {
 
     @Test
     public void shouldAddNewCommentToPostTest() {
-//        LoginPage loginPage = new LoginPage(driveer);
+        LoginPage loginPage = new LoginPage(driver);
         PostsPage postsPage = new PostsPage(driver);
+        String comment = UUID.randomUUID().toString();
+
+        loginPage.open();
+        loginPage.signIn();
 
         postsPage.open();
+        Post post = postsPage.openPost();
 
-        Post post = postsPage.findPost();
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        post.addComment(comment);
+        post.publishComment();
 
-        Assert.assertTrue(false);
+        post.waitForElementOnPage(comment,5000);
+
+        Assert.assertTrue(post.isPostPublished(comment));
+
+        loginPage.logOut();
     }
 }

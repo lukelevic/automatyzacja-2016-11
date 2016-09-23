@@ -1,5 +1,6 @@
 package Pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class PostsPage extends Page {
@@ -13,18 +14,18 @@ public class PostsPage extends Page {
     }
 
     public boolean isPostPublished(String title, String text) {
-
         if (!driver.getPageSource().contains(title)) {
             return false;
         }
         if (!driver.getPageSource().contains(text)) {
             return false;
         }
-
         return true;
     }
 
-    public Post findPost() {
-        return null;
+
+    public Post openPost() {
+        driver.findElement(By.className("leave-reply")).click();
+        return new Post(driver);
     }
 }
