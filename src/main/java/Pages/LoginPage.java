@@ -30,7 +30,7 @@ public class LoginPage extends Page {
     public void logOut() {
         click(By.cssSelector("img.avatar.avatar-32"));
 
-        WebDriverWait wait = new WebDriverWait(driver, 2);
+        WebDriverWait wait = new WebDriverWait(driver, 5);
             wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("button.ab-sign-out")));
 
         click(By.cssSelector("button.ab-sign-out"));
