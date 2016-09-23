@@ -19,7 +19,7 @@
         import java.util.regex.Pattern;
         import static org.apache.commons.lang3.StringUtils.join;
 
-public class seleniumTest {
+public class seleniumAnyTest {
     private WebDriver driver;
     private String baseUrl;
     private boolean acceptNextAlert = true;
