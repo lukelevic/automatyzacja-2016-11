@@ -15,7 +15,7 @@ private String submit = "search-submit";
     }
 
     public void submit() {
-        driver.findElement(By.id(submit)).click();
+        driver.findElement(By.xpath(".//*[@id='publish']")).click();
 
     }
 
@@ -24,7 +24,7 @@ private String submit = "search-submit";
 
         driver.findElement(By.id("content-html")).click();
         driver.findElement(By.id("content")).sendKeys(title +" " +title);
-        driver.findElement(By.xpath(".//*[@id='publish']")).click();
+        //driver.findElement(By.xpath(".//*[@id='publish']")).click();
 
     }
 }

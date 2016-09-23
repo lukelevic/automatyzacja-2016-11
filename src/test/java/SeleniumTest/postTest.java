@@ -11,16 +11,14 @@ import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 
-public class postTest extends Page {
+public class postTest extends Scenario {
 
-    private WebDriver driver;
+   // private WebDriver driver;
     String password = "QW12qw12";
     String user = "szkolenieautomatyzacja";
     private Date data;
 
-    public postTest(WebDriver driver) {
-        super(driver);
-    }
+
 
 
     @Test
@@ -31,6 +29,10 @@ public class postTest extends Page {
         String reportDate = data.toString();
         title = reportDate + " seba";
         System.out.println(title);
+
+
+
+
         LoginPage lp = new LoginPage(driver);
         lp.goToLogin();
         AdminMainPage amp = lp.signLogin(user, password);
