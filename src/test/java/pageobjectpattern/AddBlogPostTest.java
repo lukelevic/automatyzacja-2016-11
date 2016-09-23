@@ -38,6 +38,6 @@ public class AddBlogPostTest {
 
         // then
         postPage.assertNewBlogPostIsAdded();
-        mainAdminPage.logOutPostPage();
+        postPage.logOut();
     }
 }

@@ -12,7 +12,7 @@ abstract class WpAdminPage extends WpPage {
         super(driver);
     }
 
-    public void logOutPostPage() {
+    public void logOut() {
         click(By.className("masterbar__item-me"));
         click(By.className("me-sidebar__signout-button"));
         driver.quit();

@@ -23,7 +23,7 @@ public class WpPostPage extends WpAdminPage {
         Assert.assertTrue(driver.findElement(By.className("notice__content")).isDisplayed());
     }
 
-    public void logOutPostPage() {
+    public void logOut() {
         click(By.className("masterbar__item-me"));
         closeAlertIfOpened();
         click(By.className("me-sidebar__signout-button"));
