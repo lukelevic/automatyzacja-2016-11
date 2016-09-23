@@ -1,8 +1,6 @@
 package SeleniumTests;
 
-import Pages.AdminPage;
-import Pages.LoginPage;
-import Pages.PostsPage;
+import Pages.*;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -13,8 +11,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.UUID;
 
 public class AddBlogPostTest {
-    private String title = UUID.randomUUID().toString();
-    private String text = UUID.randomUUID().toString();
+
     private WebDriver driver;
 
 
@@ -32,7 +29,11 @@ public class AddBlogPostTest {
 
     @Test
     public void shouldPublishPost() {
+        String title = UUID.randomUUID().toString();
+        String text = UUID.randomUUID().toString();
+
         LoginPage loginPage = new LoginPage(driver);
+        PostsPage postsPage = new PostsPage(driver);
 
         loginPage.open();
         AdminPage adminPage = loginPage.signIn();
@@ -40,12 +41,39 @@ public class AddBlogPostTest {
         adminPage.addPost(title,text);
         adminPage.publish();
 
-        PostsPage postsPage = new PostsPage(driver);
-
         loginPage.logOut();
 
         postsPage.open();
-
         Assert.assertTrue(postsPage.isPostPublished(title, text));
+    }
+
+    @Test
+    public void shouldAddNewTagTest() {
+        String name = UUID.randomUUID().toString();
+        String description = UUID.randomUUID().toString();
+        LoginPage loginPage = new LoginPage(driver);
+
+        loginPage.open();
+        AdminPage adminPage = loginPage.signIn();
+
+        adminPage.addTag(name, description);
+
+        adminPage.publishTag();
+        adminPage.waitForElementOnPage(name, 1000);
+
+        Assert.assertTrue(adminPage.isTagPublished(name, description));
+        loginPage.logOut();
+    }
+
+    @Test
+    public void shouldAddNewCommentToPostTest() {
+//        LoginPage loginPage = new LoginPage(driveer);
+        PostsPage postsPage = new PostsPage(driver);
+
+        postsPage.open();
+
+        Post post = postsPage.findPost();
+
+        Assert.assertTrue(false);
     }
 }

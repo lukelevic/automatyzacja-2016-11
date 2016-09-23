@@ -23,4 +23,8 @@ public class PostsPage extends Page {
 
         return true;
     }
+
+    public Post findPost() {
+        return null;
+    }
 }

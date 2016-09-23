@@ -5,9 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-/**
- * Created by Administrator on 2016-09-23.
- */
 public class AdminPage extends Page {
 
     public AdminPage(WebDriver driver) {
@@ -15,9 +12,9 @@ public class AdminPage extends Page {
     }
 
     public void addPost(String title, String text) {
-        //TODO:select from menu
-        click(By.xpath(".//*[@id='menu-posts']/a/div[3]"));
-        click(By.xpath(".//*[@id='menu-posts']/ul/li[3]/a"));
+        MenuPanel menuPanel = new MenuPanel(driver);
+
+        menuPanel.selectAddPost();
 
         insert(By.xpath(".//*[@id='title']"), title);
         click(By.xpath(".//*[@id='content-html']"));
@@ -38,4 +35,33 @@ public class AdminPage extends Page {
             wait.until(ExpectedConditions.invisibilityOfElementWithText(By.xpath(".//*[@id='publish']"),"Zaktualizuj"));
     }
 
+    public void addTag(String name, String description) {
+        MenuPanel menuPanel = new MenuPanel(driver);
+
+        menuPanel.selectAddTag();
+
+        insert(By.xpath(".//*[@id='tag-name']"), name);
+        insert(By.xpath(".//*[@id='tag-description']"), description);
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void publishTag() {
+        click(By.xpath(".//*[@id='submit']"));
+    }
+
+    public boolean isTagPublished(String name, String description) {
+        if (!driver.getPageSource().contains(name)) {
+            return false;
+        }
+        if (!driver.getPageSource().contains(description)) {
+            return false;
+        }
+        return true;
+    }
 }
