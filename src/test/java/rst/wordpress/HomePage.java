@@ -18,8 +18,16 @@ public class HomePage extends Page{
 
     public Boolean isPostAdded(String title) {
         driver.get(baseUrl + "/");
-        driver.findElement(By.linkText(title)).getText();
-
         return title.equals(driver.findElement(By.linkText(title)).getText());
+    }
+
+    public HomePage goToMainPage(WebDriver driver) {
+        driver.get(baseUrl + "/");
+        return new HomePage(driver);
+    }
+    public SinglePost goToFirstMyPost() {
+        driver.findElement(By.xpath("//*[@id=\"categories-3\"]/ul/li[2]/a")).click();
+        driver.findElement(By.xpath("//*[@id]/header/div/a/span")).click();
+        return new SinglePost(driver);
     }
 }
