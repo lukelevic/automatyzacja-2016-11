@@ -22,4 +22,6 @@ abstract class WpPage {
     protected static void click(By by) {
         driver.findElement(by).click();
     }
+
+    public abstract void open();
 }

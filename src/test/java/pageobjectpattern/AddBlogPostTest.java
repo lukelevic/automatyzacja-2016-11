@@ -1,36 +1,26 @@
 package pageobjectpattern;
 
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
-import java.util.concurrent.TimeUnit;
-
-import static pageobjectpattern.WpPage.driver;
 
 /**
  * Created by Administrator on 2016-09-23.
  */
-public class AddBlogPostTest {
+public class AddBlogPostTest extends Scenario {
+    private static String title;
+
     @BeforeClass
-    public static void setUp() throws Exception {
-        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+    public static void setUpTitle() {
+        title = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Timestamp(System.currentTimeMillis()));
     }
 
     @Test
     public void shouldAddNewBlogPostTest() throws Exception {
-        String title = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Timestamp(System.currentTimeMillis()));
         String msg = "This is auto-generated test for JUnit.";
-
-        // given
-        WpLoginPage loginPage = new WpLoginPage(driver);
-        loginPage.open();
-        WpMainAdminPage mainAdminPage = loginPage.logIn();
 
         // when
         WpPostPage postPage = mainAdminPage.clickAdminBarAddNewBlogPostButton();
@@ -38,6 +28,15 @@ public class AddBlogPostTest {
 
         // then
         postPage.assertNewBlogPostAlertIsDisplayed();
-        postPage.logOut();
+    }
+
+    @Test
+    public void shouldNewlyAddedPostBeOnThePostsListTest() throws Exception {
+        // given
+        WpAdminPostListPage postListPage = new WpAdminPostListPage(driver);
+        postListPage.open();
+
+        // then
+        postListPage.isPostOnTheList(title);
     }
 }

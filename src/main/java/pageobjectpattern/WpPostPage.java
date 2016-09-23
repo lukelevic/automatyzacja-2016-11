@@ -13,6 +13,8 @@ public class WpPostPage extends WpAdminPage {
         super(driver);
     }
 
+    public void open() {};
+
     public void addNewPostAndPublish(String title, String msg) {
         insert(By.className("editor-title__input"), title);
         insert(By.id("tinymce-1"), msg);

@@ -19,10 +19,10 @@ public class WpLoginPage extends WpPage {
         driver.get(baseUrl + urlPath);
     }
 
-    public WpMainAdminPage logIn() {
+    public WpAdminMainPage logIn() {
         insert(By.id("user_login"), userLogin);
         insert(By.id("user_pass"), userPass);
         click(By.id("wp-submit"));
-        return new WpMainAdminPage(driver);
+        return new WpAdminMainPage(driver);
     }
 }

@@ -1,6 +1,5 @@
 package pageobjectpattern;
 
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -13,8 +12,8 @@ abstract class WpAdminPage extends WpPage {
     }
 
     public void logOut() {
-        click(By.className("masterbar__item-me"));
-        click(By.className("me-sidebar__signout-button"));
+        click(By.cssSelector("img.avatar.avatar-32"));
+        click(By.cssSelector("button.ab-sign-out"));
         driver.quit();
     }
 }

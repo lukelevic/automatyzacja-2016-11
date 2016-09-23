@@ -6,9 +6,14 @@ import org.openqa.selenium.WebDriver;
 /**
  * Created by Administrator on 2016-09-23.
  */
-public class WpMainAdminPage extends WpAdminPage {
-    public WpMainAdminPage(WebDriver driver) {
+public class WpAdminMainPage extends WpAdminPage {
+
+    public WpAdminMainPage(WebDriver driver) {
         super(driver);
+    }
+
+    public void open() {
+        driver.get(baseUrl + "/wp-admin");
     }
 
     public static WpPostPage clickAdminBarAddNewBlogPostButton() {
