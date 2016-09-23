@@ -25,10 +25,11 @@ namespace SeleniumTests
             [Values(false, false, false)] bool result)
         {
             login(username, password);
-            result = checkIfLoggedIn();
+            bool checkresult = checkIfLoggedIn();
+            Assert.AreEqual(result, checkresult);
         }
 
-    [Test]
+        [Test]
         public void shouldAddNewPost()
         {
             string title = "nowy post";
@@ -38,8 +39,7 @@ namespace SeleniumTests
             addPost(title, content);
 
             click(By.ClassName("view-all"));
-            Assert.AreEqual(true, driver.PageSource.Contains(title));
-                        
+            Assert.AreEqual(true, driver.PageSource.Contains(title));                        
         }
     }
 }

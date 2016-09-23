@@ -23,18 +23,15 @@ namespace TestAutomation
         protected bool checkIfLoggedIn()
         {
             if (driver.PageSource.Contains("Kokpit")) return true;
-            else return false;
-                
+            else return false;                
         }
 
         protected void login(string userName, string password)
         {
-
             click(By.Id("user_login"));
             insert(By.Id("user_login"),userName);
             insert(By.Id("user_pass"), password);
             click(By.Id("wp-submit"));
-
         }
 
         protected void LogOut()
@@ -43,34 +40,30 @@ namespace TestAutomation
             click(By.ClassName("ab-sign-out"));
            
         }
+
         protected void openPage(string url)
         {
             driver.Navigate().GoToUrl(url);
             driver.Manage().Window.Maximize();
         }
        
-
         protected void click(By by)
         {
             driver.FindElement(by).Click();
         }
 
         protected void insert(By by, string text)
-        {
-       
+        {       
             driver.FindElement(by).Clear();
             driver.FindElement(by).SendKeys(text);
         }
-
-
-
+        
         [SetUp]
         protected void setupTest()
         {
             driver = new ChromeDriver(@"C:\repozytorium\automatyzacja-2016-11\");
             driver.Navigate().GoToUrl("https://automatyzacja2016.wordpress.com/wp-admin");
-            driver.Manage().Window.Maximize();
-            
+            driver.Manage().Window.Maximize();            
         }
 
         [TearDown]
