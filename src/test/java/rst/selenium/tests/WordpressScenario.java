@@ -1,4 +1,4 @@
-package com.example.tests;
+package rst.selenium.tests;
 
 import com.thoughtworks.selenium.webdriven.commands.WaitForCondition;
 import org.junit.After;

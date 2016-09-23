@@ -2,6 +2,7 @@ package com.example.tests;
 
 import org.junit.*;
 import org.openqa.selenium.By;
+import rst.selenium.tests.WordpressScenario;
 
 public class  AddPostPostsTest extends WordpressScenario {
 
