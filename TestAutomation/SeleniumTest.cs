@@ -38,6 +38,7 @@ namespace SeleniumTests
         {
             Click(By.XPath("//div[@class='wp-menu-image dashicons-before dashicons-admin-post']"));
             Click(By.XPath("//a[@class='page-title-action']"));
+
             InsertText(By.XPath("//input[@id='title']"), "nowy_wpis-ms");
             Click(By.XPath("//button[contains(.,'Tekstowy')]"));
             InsertText(By.ClassName("wp-editor-area"), "tekst do wpisu");
