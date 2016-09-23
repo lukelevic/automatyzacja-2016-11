@@ -22,11 +22,11 @@ namespace SeleniumTests
         public void shouldNotLogInWithIncorrectCredentials( 
             [Values("user1", "user2", "user3")] string username,
             [Values("password1", "password2", "password3")] string password,
-            [Values(false, false, false)] bool result)
+            [Values(false, false, false)] bool expectedResult)
         {
             login(username, password);
-            bool checkresult = checkIfLoggedIn();
-            Assert.AreEqual(result, checkresult);
+            bool result = checkIfLoggedIn();
+            Assert.AreEqual(expectedResult, result);
         }
 
         [Test]
@@ -37,6 +37,7 @@ namespace SeleniumTests
             login("szkolenieautomatyzacja", "QW12qw12");
 
             addPost(title, content);
+            savePost();
 
             click(By.ClassName("view-all"));
             Assert.AreEqual(true, checkIfPageContains(title));                        

@@ -11,12 +11,19 @@ namespace TestAutomation
 {
     public class Scenario
     {
-        private IWebDriver driver;
+        protected IWebDriver driver;
         
+
         protected void addPost(string title, string content)
         {
-            driver.FindElement(By.Id("title")).SendKeys(title);
-            driver.FindElement(By.Id("content")).SendKeys(content);
+            insert(By.Id("title"), title);
+            insert(By.Id("content"), content);
+            //driver.FindElement(By.Id("title")).SendKeys(title);
+            //driver.FindElement(By.Id("content")).SendKeys(content);
+        }
+
+        protected void savePost()
+        {
             driver.FindElement(By.Id("save-post")).Click();
         }
 
@@ -83,3 +90,17 @@ namespace TestAutomation
         }
     }
 }
+
+
+
+//int input = Convert.ToInt32(Console.ReadLine());
+//string classify;
+
+//// if-else construction.
+//if (input > 0)
+//    classify = "positive";
+//else
+//    classify = "negative";
+
+//// ?: conditional operator.
+//classify = (input > 0) ? "positive" : "negative";
