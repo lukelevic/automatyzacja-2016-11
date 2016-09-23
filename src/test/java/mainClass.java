@@ -105,12 +105,12 @@ public class mainClass {
     }
 
     @After
-    public void tearDown() throws Exception {
-        driver.quit();
-        String verificationErrorString = verificationErrors.toString();
-        if (!"".equals(verificationErrorString)) {
-            fail(verificationErrorString);
-        }
+        public void tearDown() throws Exception {
+            driver.quit();
+            String verificationErrorString = verificationErrors.toString();
+            if (!"".equals(verificationErrorString)) {
+                fail(verificationErrorString);
+            }
 
     }
 

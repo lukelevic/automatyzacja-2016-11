@@ -3,8 +3,11 @@ package SeleniumTest;
 import Pages.*;
 import org.junit.Test;
 import org.omg.CORBA.portable.Streamable;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.sql.Timestamp;
 import java.util.Date;
@@ -17,6 +20,7 @@ public class postTest extends Scenario {
     String password = "QW12qw12";
     String user = "szkolenieautomatyzacja";
     private Date data;
+
 
 
 
@@ -38,6 +42,7 @@ public class postTest extends Scenario {
         AdminMainPage amp = lp.signLogin(user, password);
         NewPostPage npp = amp.goTOAddPost();
         npp.addPosts(title);
+
         npp.submit();
         AllPostPage app = new AllPostPage(driver);
         app.openPostPage();

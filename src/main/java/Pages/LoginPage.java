@@ -2,6 +2,8 @@ package Pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * Created by Administrator on 2016-09-23.
@@ -23,9 +25,12 @@ public class LoginPage extends Page{
     }
 
     public AdminMainPage signLogin(String user, String password) {
-        driver.findElement(By.xpath(".//*[@id='user_login']")).click();
+        new WebDriverWait(driver,60).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(".//*[@id='user_login']")));
+        driver.findElement(By.xpath(".//*[@id='user_login']")).clear();
        driver.findElement(By.xpath(".//*[@id='user_login']")).sendKeys(user);
-        driver.findElement(By.xpath(".//*[@id='user_pass']")).click();
+        driver.findElement(By.xpath(".//*[@id='user_login']")).clear();
+        driver.findElement(By.xpath(".//*[@id='user_login']")).sendKeys(user);
+        driver.findElement(By.xpath(".//*[@id='user_pass']")).clear();
         driver.findElement(By.xpath(".//*[@id='user_pass']")).sendKeys(password);
         driver.findElement(By.id("wp-submit")).click();
 
