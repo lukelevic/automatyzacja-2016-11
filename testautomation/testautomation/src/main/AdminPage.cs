@@ -11,7 +11,10 @@ namespace testautomation.src.main
 
         internal AddPostPage GoToAddPostPage()
         {
-            throw new NotImplementedException();
+
+            click(By.XPath("//*[@id=\"menu-posts\"]/a"));
+
+            return new AddPostPage(driver);
         }
     }
 }

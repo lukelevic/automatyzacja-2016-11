@@ -11,7 +11,7 @@ namespace testautomation.src.main
 
         internal void createPost(string v1, string v2)
         {
-            click(By.XPath("//*[@id=\"menu-posts\"]/a"));
+           
             click(By.XPath("//*[@id=\"wpbody-content\"]/div[3]/h1/a"));
             InsertText(By.Name("post_title"), "Title");
             InsertText(By.Id("content"), "description");
