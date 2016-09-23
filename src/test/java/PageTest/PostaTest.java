@@ -51,17 +51,13 @@ public class PostaTest {
         Assert.assertTrue(ppp.isPostAdded(title));
         LogOutPage lop = ppp.logOut();
 
-
-
-
-
     }
-        /*@After
+        @After
         public void tearDown()  {
             driver.quit();
 
 
     }
 
-*/
+
 }
