@@ -21,8 +21,6 @@ public class SeleniumTest extends Scenario {
 
         //when
         //TODO login(user,password)
-
-
     }
 
 
@@ -31,7 +29,6 @@ public class SeleniumTest extends Scenario {
     public void ShouldAddPost() throws Exception {
         login();
         addNewPost();
-        // Thread.sleep(3000);
         assertAddPost();
 
     }
