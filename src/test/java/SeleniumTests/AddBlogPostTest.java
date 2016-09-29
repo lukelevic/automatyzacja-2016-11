@@ -18,7 +18,7 @@ public class AddBlogPostTest {
     @Before
     public void setUp() {
 //        System.setProperty("webdriver.chrome.driver","src/main/resources/chromedriver");
-        System.setProperty("webdriver.chrome.driver","/usr/share/chromedriver/chromedriver/");
+//        System.setProperty("webdriver.chrome.driver","/usr/share/chromedriver/chromedriver/");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
     }
